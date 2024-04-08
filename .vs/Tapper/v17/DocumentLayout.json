@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|SDL_Project__Template\\SDL_Project__Template.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\SDL_Project__Template\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|SDL_Project__Template\\SDL_Project__Template.vcxproj|solutionrelative:SDL_Project__Template\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,13 +20,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\SDL_Project__Template\\main.cpp",
-              "RelativeDocumentMoniker": "SDL_Project__Template\\main.cpp",
-              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\SDL_Project__Template\\main.cpp",
-              "RelativeToolTip": "SDL_Project__Template\\main.cpp",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAABgAAAAKAAAA",
+              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\main.cpp",
+              "RelativeDocumentMoniker": "Tapper\\main.cpp",
+              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\main.cpp",
+              "RelativeToolTip": "Tapper\\main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-02-17T20:17:16.552Z",
+              "WhenOpened": "2024-04-08T17:33:52.758Z",
               "EditorCaption": ""
             }
           ]
