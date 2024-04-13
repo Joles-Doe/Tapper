@@ -1,6 +1,5 @@
 #include "Engine.h"
-#include <iostream>
-#include <SDL.h>
+
 
 //default constructor
 Engine::Engine()
@@ -32,11 +31,45 @@ Engine::Engine()
 //{
 //}
 
+void Engine::AddLayerElement(std::shared_ptr<GameObject> _input, int _layer)
+{
+	sortLayers = true;
+	LayeredGameObject layeredElement(_input, _layer);
+	layerElements.push_back(layeredElement);
+}
+
+bool Engine::compareLayers(const LayeredGameObject &lhs, const LayeredGameObject &rhs)
+{
+	if (lhs.layer == rhs.layer)
+	{
+		return false;
+	}
+	else
+	{
+		return lhs.layer < rhs.layer;
+	}
+}
+
+void Engine::SortLayers()
+{
+	std::sort(layerElements.begin(), layerElements.end(), compareLayers);
+	sortLayers = false;
+}
+
 //clears the renderer
 void Engine::Reset()
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
+}
+
+void Engine::Update(SDL_Event e)
+{
+	//Update for loop
+	for (LayeredGameObject obj : layerElements)
+	{
+		obj.gameObject->Update(e);
+	}
 }
 
 //draws the renderer to the window

@@ -44,7 +44,7 @@ void GameObject::SetRectPos(int _x, int _y)
 	}
 }
 
-void GameObject::SetRectDim(int _w, int _h)
+void GameObject::SetRectScale(int _w, int _h)
 {
 	if (_w != -1)
 	{
