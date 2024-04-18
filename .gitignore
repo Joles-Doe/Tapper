@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Include SDL Library
+!SDL/*
+!SDL2.dll
