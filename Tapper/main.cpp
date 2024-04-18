@@ -33,7 +33,6 @@ int main(int argc, char* argv[])
 
 	Uint64 frameStart{ 0 };
 	Uint64 frameEnd{ 0 };
-	float elapsed{ 0 };
 
 	bool loop = true;
 	while (loop)
@@ -50,11 +49,9 @@ int main(int argc, char* argv[])
 		}
 		sdlEngine.Update(e);
 		sdlEngine.Present();
-
+		
 		frameEnd = SDL_GetTicks();
-
-		std::cout << frameEnd - frameStart << std::endl;
-
+		std::cout << (frameEnd - frameStart) << std::endl;
 		if (frameDelay > frameEnd - frameStart)
 		{
 			SDL_Delay(frameDelay - (frameEnd - frameStart));

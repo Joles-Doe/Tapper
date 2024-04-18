@@ -1,4 +1,4 @@
 ﻿  main.cpp
-D:\s5623772\Tapper\Tapper\main.cpp(10,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\s5623772\Tapper\Tapper\main.cpp(60,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-  Tapper.vcxproj -> D:\s5623772\Tapper\x64\Debug\Tapper.exe
+C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\main.cpp(10,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\main.cpp(57,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+  Tapper.vcxproj -> C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\x64\Debug\Tapper.exe
