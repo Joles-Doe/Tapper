@@ -1,3 +1,4 @@
+
 # Prerequisites
 *.d
 
@@ -32,5 +33,5 @@
 *.app
 
 # Include SDL Library
-!SDL/*
+!SDL/
 !SDL2.dll
