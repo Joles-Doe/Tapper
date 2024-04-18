@@ -9,6 +9,9 @@ int main(int argc, char* argv[])
 {
 	srand(time(0));
 	
+	const int FPS{ 60 };
+	const float frameDelay{ 1000 / FPS };
+
 	Engine sdlEngine = Engine();
 	SDL_Event e;
 
@@ -28,14 +31,15 @@ int main(int argc, char* argv[])
 	sideWall->LoadImage("Side Wall.bmp");
 	sdlEngine.AddLayerElement(sideWall, 5);
 
-	Uint64 start{ 0 };
-	Uint64 end{ 0 };
+	Uint64 frameStart{ 0 };
+	Uint64 frameEnd{ 0 };
 	float elapsed{ 0 };
 
 	bool loop = true;
 	while (loop)
 	{
-		start = SDL_GetPerformanceCounter();
+		frameStart = SDL_GetTicks();
+
 		sdlEngine.Reset();
 		while (SDL_PollEvent(&e))
 		{
@@ -46,11 +50,16 @@ int main(int argc, char* argv[])
 		}
 		sdlEngine.Update(e);
 		sdlEngine.Present();
-		end = SDL_GetPerformanceCounter();
-		elapsed = (end - start) / (float)SDL_GetPerformanceFrequency();
-		std::cout << "Current FPS: " << 1.0f / elapsed << std::endl;
-	}
 
+		frameEnd = SDL_GetTicks();
+
+		std::cout << frameEnd - frameStart << std::endl;
+
+		if (frameDelay > frameEnd - frameStart)
+		{
+			SDL_Delay(frameDelay - (frameEnd - frameStart));
+		}
+	}
 
 	return 0;
 }
