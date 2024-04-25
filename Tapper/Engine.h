@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include "GameObject.h"
+#include "EventController.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -30,15 +31,16 @@ private:
 
 	//Custom sorting function for std::sort
 	static bool compareLayers(const LayeredGameObject &lhs, const LayeredGameObject &rhs);
-public:
-	
 
+	bool gameLoop{ false };
+public:
 	Engine();
 	//~Engine();
 
 	//Returns the renderer
 	SDL_Renderer* GetRenderer();
-	//void Blit(SDL_Rect _rect, int _layer);
+	
+	EventController* controller{ nullptr };
 	
 	//Adds an element to the engine
 	void AddLayerElement(std::shared_ptr<GameObject> _input, int _layer);
@@ -47,7 +49,12 @@ public:
 	//Clears the renderer
 	void Reset();
 	//Updates attached objects
-	void Update(SDL_Event e);
+	void Update();
 	//Draws the renderer to the window
 	void Present();
+
+	//Gets current game state
+	bool GetLoopState();
+	//Sets current game state
+	void SetLoopState(bool _state);
 };

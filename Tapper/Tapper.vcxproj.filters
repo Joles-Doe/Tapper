@@ -27,6 +27,12 @@
     <ClCompile Include="Background.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EventController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -38,5 +44,28 @@
     <ClInclude Include="Background.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EventController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Back Wall.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Counter Single.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Counters.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Side Wall.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -21,5 +21,5 @@ public:
 	void SetRectScale(int _w, int _h);
 
 	//Runs once per frame
-	virtual void Update(SDL_Event e) = 0;
+	virtual void Update() = 0;
 };

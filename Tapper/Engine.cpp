@@ -25,6 +25,8 @@ Engine::Engine()
 		std::cout << "Renderer creation FAILED " << SDL_GetError() << std::endl;
 	}
 	SDL_RenderSetLogicalSize(renderer, windowWidth, windowHeight);
+
+	controller = new EventController();
 }
 
 //Engine::~Engine()
@@ -36,6 +38,7 @@ void Engine::AddLayerElement(std::shared_ptr<GameObject> _input, int _layer)
 	sortLayers = true;
 	LayeredGameObject layeredElement(_input, _layer);
 	layerElements.push_back(layeredElement);
+	return;
 }
 
 bool Engine::compareLayers(const LayeredGameObject &lhs, const LayeredGameObject &rhs)
@@ -54,6 +57,7 @@ void Engine::SortLayers()
 {
 	std::sort(layerElements.begin(), layerElements.end(), compareLayers);
 	sortLayers = false;
+	return;
 }
 
 //clears the renderer
@@ -61,21 +65,41 @@ void Engine::Reset()
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
+	return;
 }
 
-void Engine::Update(SDL_Event e)
+void Engine::Update()
 {
+	if (controller->GetQuitState() == true)
+	{
+		SetLoopState(false);
+		return;
+	}
+
 	//Update for loop
 	for (LayeredGameObject obj : layerElements)
 	{
-		obj.gameObject->Update(e);
+		obj.gameObject->Update();
 	}
+	return;
 }
 
 //draws the renderer to the window
 void Engine::Present()
 {
 	SDL_RenderPresent(renderer);
+	return;
+}
+
+bool Engine::GetLoopState()
+{
+	return gameLoop;
+}
+
+void Engine::SetLoopState(bool _state)
+{
+	gameLoop = _state;
+	return;
 }
 
 //returns renderer

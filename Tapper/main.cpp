@@ -13,7 +13,6 @@ int main(int argc, char* argv[])
 	const float frameDelay{ 1000 / FPS };
 
 	Engine sdlEngine = Engine();
-	SDL_Event e;
 
 	std::shared_ptr<Background> floor = std::make_shared<Background>(sdlEngine.GetRenderer());
 	floor->LoadImage("Floor.bmp");
@@ -33,25 +32,18 @@ int main(int argc, char* argv[])
 
 	Uint64 frameStart{ 0 };
 	Uint64 frameEnd{ 0 };
-
-	bool loop = true;
-	while (loop)
+	
+	sdlEngine.SetLoopState(true);
+	while (sdlEngine.GetLoopState())
 	{
 		frameStart = SDL_GetTicks();
 
 		sdlEngine.Reset();
-		while (SDL_PollEvent(&e))
-		{
-			if (e.type == SDL_QUIT)
-			{
-				loop = false;
-			}
-		}
-		sdlEngine.Update(e);
+		sdlEngine.controller->PollEvents();
+		sdlEngine.Update();
 		sdlEngine.Present();
 		
 		frameEnd = SDL_GetTicks();
-		std::cout << (frameEnd - frameStart) << std::endl;
 		if (frameDelay > frameEnd - frameStart)
 		{
 			SDL_Delay(frameDelay - (frameEnd - frameStart));

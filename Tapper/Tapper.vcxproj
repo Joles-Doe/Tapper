@@ -150,13 +150,24 @@
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="EventController.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="EventController.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Back Wall.bmp" />
+    <Image Include="Counter Single.bmp" />
+    <Image Include="Counters.bmp" />
+    <Image Include="Floor.bmp" />
+    <Image Include="Side Wall.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
