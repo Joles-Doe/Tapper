@@ -55,3 +55,8 @@ void GameObject::SetRectScale(int _w, int _h)
 		dstRect.h = _h;
 	}
 }
+
+void GameObject::Draw()
+{
+	SDL_RenderCopy(renderer, imageTexture, &srcRect, &dstRect);
+}

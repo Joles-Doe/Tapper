@@ -2,5 +2,5 @@
 
 void Background::Update()
 {
-	SDL_RenderCopy(renderer, imageTexture, &srcRect, &dstRect);
+	return;
 }

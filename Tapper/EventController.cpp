@@ -1,5 +1,4 @@
 #include "EventController.h"
-#include <iostream>
 
 void EventController::ResetVariables()
 {
@@ -48,7 +47,6 @@ void EventController::PollEvents()
 				break;
 			case SDLK_a:
 				aDown = false;
-				std::cout << "Up" << std::endl;
 				break;
 			case SDLK_s:
 				sDown = false;

@@ -67,5 +67,8 @@
     <Image Include="Side Wall.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="PlayerPlaceholder.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

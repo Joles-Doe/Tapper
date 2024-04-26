@@ -53,6 +53,11 @@ bool Engine::compareLayers(const LayeredGameObject &lhs, const LayeredGameObject
 	}
 }
 
+bool Engine::layerPredicate(const LayeredGameObject& _input)
+{
+	return _input.gameObject.unique();
+}
+
 void Engine::SortLayers()
 {
 	std::sort(layerElements.begin(), layerElements.end(), compareLayers);
@@ -65,6 +70,10 @@ void Engine::Reset()
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
+
+	//vec.erase(std::remove_if(vec.begin(), vec.end(), predicate), vec.end());
+	layerElements.erase(std::remove_if(layerElements.begin(), layerElements.end(), layerPredicate), layerElements.end());
+
 	return;
 }
 
@@ -80,6 +89,7 @@ void Engine::Update()
 	for (LayeredGameObject obj : layerElements)
 	{
 		obj.gameObject->Update();
+		obj.gameObject->Draw();
 	}
 	return;
 }
@@ -107,4 +117,14 @@ SDL_Renderer* Engine::GetRenderer()
 {
 	//std::cout << renderer;
 	return renderer;
+}
+
+EventController* Engine::GetController()
+{
+	return controller;
+}
+
+void Engine::ControllerPollEvents()
+{
+	controller->PollEvents();
 }

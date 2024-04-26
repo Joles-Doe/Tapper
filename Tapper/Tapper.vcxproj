@@ -167,6 +167,7 @@
     <Image Include="Counter Single.bmp" />
     <Image Include="Counters.bmp" />
     <Image Include="Floor.bmp" />
+    <Image Include="PlayerPlaceholder.bmp" />
     <Image Include="Side Wall.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

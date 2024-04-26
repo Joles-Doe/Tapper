@@ -9,6 +9,8 @@ protected:
 	SDL_Texture* imageTexture{ nullptr };
 	SDL_Rect srcRect{ 0 };
 	SDL_Rect dstRect{ 0 };
+	int xVelocity{ 0 };
+	int yVelocity{ 0 };
 public:
 	GameObject(SDL_Renderer* _rend);
 
@@ -22,4 +24,6 @@ public:
 
 	//Runs once per frame
 	virtual void Update() = 0;
+
+	virtual void Draw();
 };

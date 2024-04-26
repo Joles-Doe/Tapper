@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "GameObject.h"
 #include "Background.h"
+#include "Player.h"
 #include <iostream>
 #include <string>
 
@@ -30,16 +31,20 @@ int main(int argc, char* argv[])
 	sideWall->LoadImage("Side Wall.bmp");
 	sdlEngine.AddLayerElement(sideWall, 5);
 
+	std::shared_ptr<Player> player = std::make_shared<Player>(sdlEngine.GetRenderer(), sdlEngine.GetController());
+	player->LoadImage("PlayerPlaceholder.bmp");
+	sdlEngine.AddLayerElement(player, 2);
+
+
 	Uint64 frameStart{ 0 };
 	Uint64 frameEnd{ 0 };
-	
 	sdlEngine.SetLoopState(true);
 	while (sdlEngine.GetLoopState())
 	{
 		frameStart = SDL_GetTicks();
-
+		
 		sdlEngine.Reset();
-		sdlEngine.controller->PollEvents();
+		sdlEngine.ControllerPollEvents();
 		sdlEngine.Update();
 		sdlEngine.Present();
 		
