@@ -136,7 +136,7 @@ bool EventController::GetKeyDown(const std::string& _key)
 	{
 		isDown = dDown;
 	}
-	if (_key == "SPACEBAR" || _key == "spacebar")
+	if (_key == "SPACEBAR" || _key == "spacebar" || _key == "SPACE" || _key == "space")
 	{
 		isDown = spaceDown;
 	}

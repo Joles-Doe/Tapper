@@ -152,6 +152,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="EventController.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Glass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="EventController.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Glass.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>

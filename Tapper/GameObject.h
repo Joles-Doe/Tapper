@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <SDL.h>
+#include <vector>
 
 class GameObject
 {

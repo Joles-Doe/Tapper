@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
 	sideWall->LoadImage("Side Wall.bmp");
 	sdlEngine.AddLayerElement(sideWall, 5);
 
-	std::shared_ptr<Player> player = std::make_shared<Player>(sdlEngine.GetRenderer(), sdlEngine.GetController());
+	std::shared_ptr<Player> player = std::make_shared<Player>(sdlEngine.GetRenderer(), sdlEngine.GetController(), &sdlEngine);
 	player->LoadImage("PlayerPlaceholder.bmp");
 	sdlEngine.AddLayerElement(player, 2);
 

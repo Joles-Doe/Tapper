@@ -37,6 +37,8 @@ void Player::Update()
 			yTicks = startTimerY();
 			dstRect.y = yPositions[yIndex];
 			dstRect.x = counterEndPos;
+
+			endTimerSpace();
 		}
 		if (controller->GetKeyDown("s") || controller->GetKeyDown("down"))
 		{
@@ -51,6 +53,8 @@ void Player::Update()
 			yTicks = startTimerY();
 			dstRect.y = yPositions[yIndex];
 			dstRect.x = counterEndPos;
+
+			endTimerSpace();
 		}
 	}
 	else
@@ -62,12 +66,28 @@ void Player::Update()
 	}
 
 	//Spacebar interaction
-}
-
-void Player::SetController(EventController* _controller)
-{
-	controller = _controller;
-	return;
+	if (controller->GetKeyDown("spacebar"))
+	{
+		if (spaceTimer != true)
+		{
+			spaceTicks = startTimerSpace();
+		}
+		std::cout << (SDL_GetTicks() >= spaceTicks + 1000) << std::endl;
+	}
+	else
+	{
+		if (spaceTimer == true)
+		{
+			if (SDL_GetTicks() >= spaceTicks + 1000)
+			{
+				std::shared_ptr<Glass> newGlass = std::make_shared<Glass>(renderer, dstRect.x, yIndex, "l");
+				glassVector.push_back(newGlass);
+				newGlass->LoadImage("PlayerPlaceholder.bmp");
+				engine->AddLayerElement(newGlass, 4);
+			}
+		}
+		endTimerSpace();
+	}
 }
 
 Uint64 Player::startTimerY()
@@ -79,4 +99,15 @@ Uint64 Player::startTimerY()
 void Player::endTimerY()
 {
 	yTimer = false;
+}
+
+Uint64 Player::startTimerSpace()
+{
+	spaceTimer = true;
+	return SDL_GetTicks();
+}
+
+void Player::endTimerSpace()
+{
+	spaceTimer = false;
 }
