@@ -37,6 +37,18 @@ void EventController::PollEvents()
 			case SDLK_SPACE:
 				spaceDown = true;
 				break;
+			case SDLK_UP:
+				upArrowDown = true;
+				break;
+			case SDLK_LEFT:
+				leftArrowDown = true;
+				break;
+			case SDLK_DOWN:
+				downArrowDown = true;
+				break;
+			case SDLK_RIGHT:
+				rightArrowDown = true;
+				break;
 			}
 			break;
 		case SDL_KEYUP:
@@ -56,6 +68,18 @@ void EventController::PollEvents()
 				break;
 			case SDLK_SPACE:
 				spaceDown = false;
+				break;
+			case SDLK_UP:
+				upArrowDown = false;
+				break;
+			case SDLK_LEFT:
+				leftArrowDown = false;
+				break;
+			case SDLK_DOWN:
+				downArrowDown = false;
+				break;
+			case SDLK_RIGHT:
+				rightArrowDown = false;
 				break;
 			}
 			break;
@@ -115,6 +139,22 @@ bool EventController::GetKeyDown(const std::string& _key)
 	if (_key == "SPACEBAR" || _key == "spacebar")
 	{
 		isDown = spaceDown;
+	}
+	if (_key == "up" || _key == "UP")
+	{
+		isDown = upArrowDown;
+	}
+	if (_key == "left" || _key == "LEFT")
+	{
+		isDown = leftArrowDown;
+	}
+	if (_key == "down" || _key == "DOWN")
+	{
+		isDown = downArrowDown;
+	}
+	if (_key == "right" || _key == "RIGHT")
+	{
+		isDown = rightArrowDown;
 	}
 	return isDown;
 }

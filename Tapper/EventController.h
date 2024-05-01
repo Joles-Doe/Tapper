@@ -20,6 +20,10 @@ private:
 	bool aDown{ false };
 	bool sDown{ false };
 	bool dDown{ false };
+	bool upArrowDown{ false };
+	bool leftArrowDown{ false };
+	bool downArrowDown{ false };
+	bool rightArrowDown{ false };
 	bool spaceDown{ false };
 	//Mouse
 	bool mouseDown{ false };
