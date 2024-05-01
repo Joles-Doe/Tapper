@@ -56,6 +56,11 @@ void GameObject::SetRectScale(int _w, int _h)
 	}
 }
 
+bool GameObject::GetDestroy()
+{
+	return destroy;
+}
+
 void GameObject::Draw()
 {
 	SDL_RenderCopy(renderer, imageTexture, &srcRect, &dstRect);

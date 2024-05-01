@@ -13,6 +13,7 @@ protected:
 	SDL_Rect dstRect{ 0 };
 	int xVelocity{ 0 };
 	int yVelocity{ 0 };
+	bool destroy{ 0 };
 public:
 	GameObject(SDL_Renderer* _rend);
 
@@ -23,6 +24,9 @@ public:
 	void SetRectPos(int _x, int _y);
 	//Sets dimensions of the rect. Use value -1 to keep previous value
 	void SetRectScale(int _w, int _h);
+
+	//Returns the destroy variable
+	bool GetDestroy();
 
 	//Runs once per frame
 	virtual void Update() = 0;

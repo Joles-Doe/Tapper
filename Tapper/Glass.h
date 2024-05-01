@@ -6,6 +6,7 @@ class Glass : public GameObject
 private:
 	int counterPositions[3]{ 282, 525, 770 };
 	int direction{ 0 };
+	bool moveLeft{ false };
 public:
 	Glass(SDL_Renderer* _rend, int _posX, int _indexY, const std::string& _direction) : GameObject(_rend) {
 		SetRectScale(50, 50);
@@ -13,6 +14,7 @@ public:
 		if (_direction == "L" || _direction == "l" || _direction == "LEFT" || _direction == "left")
 		{
 			direction = -2;
+			moveLeft = true;
 		}
 		else
 		{

@@ -29,6 +29,7 @@ private:
 	EventController* controller{ nullptr };
 
 	std::vector<LayeredGameObject> layerElements;
+	int vecSize{ 0 };
 	bool sortLayers{ false };
 
 	//Custom sorting function for std::sort

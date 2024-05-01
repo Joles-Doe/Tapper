@@ -38,6 +38,7 @@ void Engine::AddLayerElement(std::shared_ptr<GameObject> _input, int _layer)
 	sortLayers = true;
 	LayeredGameObject layeredElement(_input, _layer);
 	layerElements.push_back(layeredElement);
+	std::cout << "Added to layer" << std::endl;
 	return;
 }
 
@@ -55,7 +56,18 @@ bool Engine::compareLayers(const LayeredGameObject &lhs, const LayeredGameObject
 
 bool Engine::layerPredicate(const LayeredGameObject& _input)
 {
-	return _input.gameObject.unique();
+	if (_input.gameObject.unique())
+	{
+		return _input.gameObject.unique();
+	}
+	else if (_input.gameObject->GetDestroy())
+	{
+		return _input.gameObject->GetDestroy();
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void Engine::SortLayers()
@@ -85,12 +97,19 @@ void Engine::Update()
 		return;
 	}
 
+
+	if (layerElements.size() >= layerElements.capacity())
+	{
+		layerElements.reserve(layerElements.size() + 3);
+	}
+
 	//Update for loop
 	for (LayeredGameObject obj : layerElements)
 	{
 		obj.gameObject->Update();
 		obj.gameObject->Draw();
 	}
+
 	return;
 }
 
