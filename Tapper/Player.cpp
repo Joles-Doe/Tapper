@@ -72,7 +72,6 @@ void Player::Update()
 		{
 			spaceTicks = startTimerSpace();
 		}
-		std::cout << (SDL_GetTicks() >= spaceTicks + 700) << std::endl;
 	}
 	else
 	{

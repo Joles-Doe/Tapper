@@ -5,11 +5,11 @@
 
 struct Projectile
 {
-	Projectile(std::shared_ptr<GameObject> _input)
+	Projectile(std::shared_ptr<Glass> _input)
 	{
 		gameObject = _input;
 	};
-	std::shared_ptr<GameObject> gameObject;
+	std::shared_ptr<Glass> gameObject;
 };
 
 class ProjectileHandler : public GameObject
@@ -28,7 +28,11 @@ public:
 
 	SDL_Rect GetIndexedRect(int _index) { return projectileVector[_index].gameObject->GetRect(); }
 
+	bool GetIndexedMoveLeft(int _index) { return projectileVector[_index].gameObject->GetMoveLeft(); }
+
 	void SetIndexedDestroy(int _index, bool _destroy) { projectileVector[_index].gameObject->SetDestroy(_destroy); }
+
+	void ClearVector();
 
 	void Update();
 	void Draw() {}

@@ -7,20 +7,28 @@
       "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Engine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\Engine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Engine.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\Engine.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Patron.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\Patron.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\EnemyHandler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\EnemyHandler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\ProjectileHandler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\ProjectileHandler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\ProjectileHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\ProjectileHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Patron.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{73A9A794-86DA-44AD-9654-9351E206C8C9}|Tapper\\Tapper.vcxproj|solutionrelative:Tapper\\Patron.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,7 +48,7 @@
               "RelativeDocumentMoniker": "Tapper\\main.cpp",
               "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\main.cpp",
               "RelativeToolTip": "Tapper\\main.cpp",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAACMAAAAAAAAA",
+              "ViewState": "AQIAAHkAAAAAAAAAAAAowIEAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-04-08T17:33:52.758Z",
               "IsPinned": true,
@@ -48,51 +56,81 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Player.cpp",
+              "RelativeDocumentMoniker": "Tapper\\Player.cpp",
+              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Player.cpp",
+              "RelativeToolTip": "Tapper\\Player.cpp",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAEkAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-02T21:07:48.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "GameObject.h",
-              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\GameObject.h",
-              "RelativeDocumentMoniker": "Tapper\\GameObject.h",
-              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\GameObject.h",
-              "RelativeToolTip": "Tapper\\GameObject.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAgAAAA",
+              "Title": "ProjectileHandler.h",
+              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\ProjectileHandler.h",
+              "RelativeDocumentMoniker": "Tapper\\ProjectileHandler.h",
+              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\ProjectileHandler.h",
+              "RelativeToolTip": "Tapper\\ProjectileHandler.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-09T18:29:38.158Z"
+              "WhenOpened": "2024-05-02T20:36:41.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProjectileHandler.cpp",
+              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\ProjectileHandler.cpp",
+              "RelativeDocumentMoniker": "Tapper\\ProjectileHandler.cpp",
+              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\ProjectileHandler.cpp",
+              "RelativeToolTip": "Tapper\\ProjectileHandler.cpp",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAtwCAAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-02T20:29:11.883Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "GameObject.cpp",
-              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\GameObject.cpp",
-              "RelativeDocumentMoniker": "Tapper\\GameObject.cpp",
-              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\GameObject.cpp",
-              "RelativeToolTip": "Tapper\\GameObject.cpp",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAAAUAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-09T18:29:43.674Z"
+              "Title": "EnemyHandler.h",
+              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\EnemyHandler.h",
+              "RelativeDocumentMoniker": "Tapper\\EnemyHandler.h",
+              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\EnemyHandler.h",
+              "RelativeToolTip": "Tapper\\EnemyHandler.h",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABcAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-02T20:04:22.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Patron.h",
+              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Patron.h",
+              "RelativeDocumentMoniker": "Tapper\\Patron.h",
+              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Patron.h",
+              "RelativeToolTip": "Tapper\\Patron.h",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACYAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-02T19:20:54.327Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Engine.h",
-              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Engine.h",
-              "RelativeDocumentMoniker": "Tapper\\Engine.h",
-              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Engine.h",
-              "RelativeToolTip": "Tapper\\Engine.h",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAADEAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-09T13:04:36.939Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Engine.cpp",
-              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Engine.cpp",
-              "RelativeDocumentMoniker": "Tapper\\Engine.cpp",
-              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Engine.cpp",
-              "RelativeToolTip": "Tapper\\Engine.cpp",
-              "ViewState": "AQIAACsAAAAAAAAAAAAYwD4AAAAbAAAA",
+              "Title": "Patron.cpp",
+              "DocumentMoniker": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Patron.cpp",
+              "RelativeDocumentMoniker": "Tapper\\Patron.cpp",
+              "ToolTip": "C:\\Users\\Scott\\Documents\\Documents\\((Documents))\\University\\Object Oriented Programming\\Assignment\\Program\\Tapper\\Tapper\\Patron.cpp",
+              "RelativeToolTip": "Tapper\\Patron.cpp",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAHIAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-09T13:17:10.812Z"
+              "WhenOpened": "2024-05-02T19:20:02.841Z",
+              "EditorCaption": ""
             }
           ]
         }

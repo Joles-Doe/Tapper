@@ -19,7 +19,7 @@ void Patron::Update()
 			//If true, reset timer
 			if (resetIdleTimer == true)
 			{
-				idleTimer = IdleTimerStart();
+				idleTimer = TimerStart();
 				resetIdleTimer = false;
 			}
 			else
@@ -32,7 +32,7 @@ void Patron::Update()
 					{
 						idle = true;
 						//Reset timer for idling sequence
-						idleTimer = IdleTimerStart();
+						idleTimer = TimerStart();
 					}
 					//Else, reset the timer again
 					else
@@ -46,7 +46,50 @@ void Patron::Update()
 	}
 	else
 	{
-		dstRect.x -= 3;
+		//If true, pause to drink
+		if (drink == true)
+		{
+			if (SDL_GetTicks() > drinkTimer + 2000)
+			{
+				drink = false;
+				resetDrinkTimer = true;
+				canLeave = false;
+				returnDrink = true;
+			}
+		}
+		else
+		{
+			//If true, reset timer
+			if (resetDrinkTimer == true)
+			{
+				drinkTimer = TimerStart();
+				resetDrinkTimer = false;
+			}
+			else
+			{
+				//Check if patron is still on screen
+				if (dstRect.x > 0)
+				{
+					//Once the timer reaches two seconds
+					if (SDL_GetTicks() > drinkTimer + 1200)
+					{
+						//Check if patron should start drinking
+						if (CheckDrink() == true)
+						{
+							drink = true;
+							//Reset timer for drinking sequence
+							drinkTimer = TimerStart();
+						}
+						//Else, reset the timer again
+						else
+						{
+							resetDrinkTimer = true;
+						}
+					}
+				}
+			}
+			dstRect.x -= 3;
+		}
 	}
 
 
@@ -56,12 +99,18 @@ void Patron::Update()
 	}
 }
 
-Uint64 Patron::IdleTimerStart()
+Uint64 Patron::TimerStart()
 {
 	return SDL_GetTicks();
 }
 
 bool Patron::CheckIdle()
+{
+	int x = rand() % 3;
+	return x == 2;
+}
+
+bool Patron::CheckDrink()
 {
 	int x = rand() % 3;
 	return x == 2;

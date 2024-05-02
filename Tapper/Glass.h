@@ -22,6 +22,8 @@ public:
 		}
 	}
 
+	bool GetMoveLeft() { return moveLeft; }
+
 	void Update();
 };
 

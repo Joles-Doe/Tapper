@@ -18,7 +18,7 @@ bool ProjectileHandler::ProjectilePredicate(const Projectile& _input)
 
 void ProjectileHandler::AddProjectile(int _x, int _y, std::string _direction, int _layer)
 {
-	std::shared_ptr<Glass> newGlass = std::make_shared<Glass>(renderer, _x, _y, "l");
+	std::shared_ptr<Glass> newGlass = std::make_shared<Glass>(renderer, _x, _y, _direction);
 	newGlass->LoadImage("GlassPlaceholder.bmp");
 
 	Projectile newProjectile(newGlass);
@@ -26,6 +26,11 @@ void ProjectileHandler::AddProjectile(int _x, int _y, std::string _direction, in
 
 	engine->AddLayerElement(newProjectile.gameObject, _layer);
 	return;
+}
+
+void ProjectileHandler::ClearVector()
+{
+	projectileVector.clear();
 }
 
 void ProjectileHandler::Update()
@@ -36,10 +41,4 @@ void ProjectileHandler::Update()
 	{
 		projectileVector.reserve(projectileVector.size() + 3);
 	}
-
-	for (Projectile x : projectileVector)
-	{
-		std::cout << x.gameObject.get() << std::endl;
-	}
-
 }
