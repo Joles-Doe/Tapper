@@ -24,7 +24,12 @@ public:
 
 	void AddProjectile(int _X, int _Y, std::string _direction, int _layer);
 
+	int GetVectorSize() { return projectileVector.size(); }
+
+	SDL_Rect GetIndexedRect(int _index) { return projectileVector[_index].gameObject->GetRect(); }
+
+	void SetIndexedDestroy(int _index, bool _destroy) { projectileVector[_index].gameObject->SetDestroy(_destroy); }
+
 	void Update();
 	void Draw() {}
 };
-

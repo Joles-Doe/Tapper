@@ -4,6 +4,7 @@
 #include "Background.h"
 #include "Player.h"
 #include "ProjectileHandler.h"
+#include "EnemyHandler.h"
 #include <iostream>
 #include <string>
 
@@ -34,10 +35,18 @@ int main(int argc, char* argv[])
 
 	std::shared_ptr<Player> player = std::make_shared<Player>(sdlEngine.GetRenderer(), sdlEngine.GetController());
 	player->LoadImage("PlayerPlaceholder.bmp");
-	sdlEngine.AddLayerElement(player, 3);
+	sdlEngine.AddLayerElement(player, 5);
 
 	std::shared_ptr<ProjectileHandler> projectileHandler = std::make_shared<ProjectileHandler>(sdlEngine.GetRenderer(), &sdlEngine);
 	sdlEngine.AddLayerElement(projectileHandler, 0);
+
+	std::shared_ptr<EnemyHandler> enemyHandler = std::make_shared<EnemyHandler>(sdlEngine.GetRenderer(), &sdlEngine);
+	sdlEngine.AddLayerElement(enemyHandler, 0);
+
+	enemyHandler->AddEnemy(1, 3);
+
+	SDL_Rect collisionA{ 0 };
+	SDL_Rect collisionB{ 0 };
 
 	Uint64 frameStart{ 0 };
 	Uint64 frameEnd{ 0 };
@@ -53,6 +62,20 @@ int main(int argc, char* argv[])
 		if (player->CheckNewGlass() == true)
 		{
 			projectileHandler->AddProjectile(player->GetRectX(), player->GetYIndex(), "l", 5);
+		}
+
+		for (int x = 0; x < projectileHandler->GetVectorSize(); x++)
+		{
+			collisionA = projectileHandler->GetIndexedRect(x);
+			for (int y = 0; y < enemyHandler->GetVectorSize(); y++)
+			{
+				collisionB = enemyHandler->GetIndexedRect(y);
+				if (SDL_HasIntersection(&collisionA, &collisionB))
+				{
+					projectileHandler->SetIndexedDestroy(x, true);
+					enemyHandler->SetIndexedLeave(y, true);
+				}
+			}
 		}
 
 		sdlEngine.Present();

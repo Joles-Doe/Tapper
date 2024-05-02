@@ -39,6 +39,12 @@
     <ClCompile Include="ProjectileHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Patron.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -62,6 +68,12 @@
     <ClInclude Include="ProjectileHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Patron.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Back Wall.bmp">
@@ -83,6 +95,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="GlassPlaceholder.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="PatronPlaceholder.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

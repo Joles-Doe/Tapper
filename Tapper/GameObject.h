@@ -11,6 +11,8 @@ protected:
 	SDL_Texture* imageTexture{ nullptr };
 	SDL_Rect srcRect{ 0 };
 	SDL_Rect dstRect{ 0 };
+
+	int velocity[2]{ 0, 0 };
 	bool destroy{ 0 };
 public:
 	GameObject(SDL_Renderer* _rend);
@@ -27,9 +29,19 @@ public:
 	//Gets Y value of the rect.
 	int GetRectY();
 
+	//Gets the Rect of the object
+	SDL_Rect GetRect() { return dstRect; }
 
 	//Returns the destroy variable
 	bool GetDestroy();
+	//Sets the destroy variable
+	void SetDestroy(bool _destroy) { destroy = _destroy; }
+
+	int GetVelocityX() { return velocity[0]; }
+	int GetVelocityY() { return velocity[1]; }
+
+	void SetVelocityX(int _velX) { velocity[0] = _velX; }
+	void SetVelocityY(int _velY) { velocity[1] = _velY; }
 
 	//Runs once per frame
 	virtual void Update() = 0;
