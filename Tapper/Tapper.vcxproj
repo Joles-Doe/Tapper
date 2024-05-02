@@ -155,6 +155,7 @@
     <ClCompile Include="Glass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ProjectileHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
@@ -163,12 +164,14 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Glass.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="ProjectileHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Back Wall.bmp" />
     <Image Include="Counter Single.bmp" />
     <Image Include="Counters.bmp" />
     <Image Include="Floor.bmp" />
+    <Image Include="GlassPlaceholder.bmp" />
     <Image Include="PlayerPlaceholder.bmp" />
     <Image Include="Side Wall.bmp" />
   </ItemGroup>

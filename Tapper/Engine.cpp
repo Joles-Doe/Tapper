@@ -35,14 +35,13 @@ Engine::Engine()
 
 void Engine::AddLayerElement(std::shared_ptr<GameObject> _input, int _layer)
 {
-	sortLayers = true;
 	LayeredGameObject layeredElement(_input, _layer);
 	layerElements.push_back(layeredElement);
-	std::cout << "Added to layer" << std::endl;
+	SortLayers();
 	return;
 }
 
-bool Engine::compareLayers(const LayeredGameObject &lhs, const LayeredGameObject &rhs)
+bool Engine::CompareLayers(const LayeredGameObject &lhs, const LayeredGameObject &rhs)
 {
 	if (lhs.layer == rhs.layer)
 	{
@@ -54,7 +53,7 @@ bool Engine::compareLayers(const LayeredGameObject &lhs, const LayeredGameObject
 	}
 }
 
-bool Engine::layerPredicate(const LayeredGameObject& _input)
+bool Engine::LayerPredicate(const LayeredGameObject& _input)
 {
 	if (_input.gameObject.unique())
 	{
@@ -72,8 +71,7 @@ bool Engine::layerPredicate(const LayeredGameObject& _input)
 
 void Engine::SortLayers()
 {
-	std::sort(layerElements.begin(), layerElements.end(), compareLayers);
-	sortLayers = false;
+	std::sort(layerElements.begin(), layerElements.end(), CompareLayers);
 	return;
 }
 
@@ -84,7 +82,7 @@ void Engine::Reset()
 	SDL_RenderClear(renderer);
 
 	//vec.erase(std::remove_if(vec.begin(), vec.end(), predicate), vec.end());
-	layerElements.erase(std::remove_if(layerElements.begin(), layerElements.end(), layerPredicate), layerElements.end());
+	layerElements.erase(std::remove_if(layerElements.begin(), layerElements.end(), LayerPredicate), layerElements.end());
 
 	return;
 }

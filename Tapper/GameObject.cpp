@@ -56,6 +56,16 @@ void GameObject::SetRectScale(int _w, int _h)
 	}
 }
 
+int GameObject::GetRectX()
+{
+	return dstRect.x;
+}
+
+int GameObject::GetRectY()
+{
+	return dstRect.y;
+}
+
 bool GameObject::GetDestroy()
 {
 	return destroy;

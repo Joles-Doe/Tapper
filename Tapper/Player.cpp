@@ -72,22 +72,44 @@ void Player::Update()
 		{
 			spaceTicks = startTimerSpace();
 		}
-		std::cout << (SDL_GetTicks() >= spaceTicks + 1000) << std::endl;
+		std::cout << (SDL_GetTicks() >= spaceTicks + 700) << std::endl;
 	}
 	else
 	{
 		if (spaceTimer == true)
 		{
-			if (SDL_GetTicks() >= spaceTicks + 1000)
+			if (SDL_GetTicks() >= spaceTicks + 700)
 			{
-				std::shared_ptr<Glass> newGlass = std::make_shared<Glass>(renderer, dstRect.x, yIndex, "l");
-				glassVector.push_back(newGlass);
-				newGlass->LoadImage("PlayerPlaceholder.bmp");
-				engine->AddLayerElement(newGlass, 4);
+				std::shared_ptr<Glass> currentGlass = std::make_shared<Glass>(renderer, dstRect.x, yIndex, "l");
+				currentGlass->LoadImage("GlassPlaceholder.bmp");
+				newGlass = true;
 			}
 		}
 		endTimerSpace();
 	}
+}
+
+bool Player::CheckNewGlass()
+{
+	if (newGlass == true)
+	{
+		newGlass = false;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+std::shared_ptr<Glass> Player::GetGlass()
+{
+	return currentGlass;
+}
+
+int Player::GetYIndex()
+{
+	return yIndex;
 }
 
 Uint64 Player::startTimerY()

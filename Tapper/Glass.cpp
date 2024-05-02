@@ -4,7 +4,7 @@ void Glass::Update()
 {
 	dstRect.x += direction;
 
-	if (dstRect.x <= 40)
+	if (dstRect.x <= 0)
 	{
 		destroy = true;
 	}

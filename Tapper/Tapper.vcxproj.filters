@@ -36,6 +36,9 @@
     <ClCompile Include="Glass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ProjectileHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -56,6 +59,9 @@
     <ClInclude Include="Glass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectileHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Back Wall.bmp">
@@ -74,6 +80,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="PlayerPlaceholder.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="GlassPlaceholder.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

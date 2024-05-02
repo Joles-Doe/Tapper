@@ -30,12 +30,11 @@ private:
 
 	std::vector<LayeredGameObject> layerElements;
 	int vecSize{ 0 };
-	bool sortLayers{ false };
 
 	//Custom sorting function for std::sort
-	static bool compareLayers(const LayeredGameObject &lhs, const LayeredGameObject &rhs);
+	static bool CompareLayers(const LayeredGameObject &lhs, const LayeredGameObject &rhs);
 	//Custom predicate for std::remove_if
-	static bool layerPredicate(const LayeredGameObject& _input);
+	static bool LayerPredicate(const LayeredGameObject& _input);
 
 	bool gameLoop{ false };
 public:

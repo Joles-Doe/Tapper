@@ -4,7 +4,7 @@
 class Glass : public GameObject
 {
 private:
-	int counterPositions[3]{ 282, 525, 770 };
+	int counterPositions[3]{ 262, 505, 750 };
 	int direction{ 0 };
 	bool moveLeft{ false };
 public:

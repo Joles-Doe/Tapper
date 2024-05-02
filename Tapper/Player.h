@@ -1,13 +1,11 @@
 #pragma once
 #include "GameObject.h"
-#include "Engine.h"
 #include "EventController.h"
 #include "Glass.h"
 
 class Player : public GameObject
 {
 private:
-	Engine* engine{ nullptr };
 	EventController* controller{ nullptr };
 
 	int yIndex{ 0 };
@@ -25,16 +23,21 @@ private:
 
 	int counterEndPos{ 776 };
 
-	std::vector<std::shared_ptr<Glass>> glassVector{ 0 };
+	std::shared_ptr<Glass> currentGlass{ 0 };
+	bool newGlass{ false };
 
 public:
-	Player(SDL_Renderer* _rend, EventController* _controller, Engine* _engine) : GameObject(_rend) {
+	Player(SDL_Renderer* _rend, EventController* _controller) : GameObject(_rend) {
 		SetRectScale(75, 175);
 		SetRectPos(counterEndPos, 200);
-		engine = _engine;
 		controller = _controller;
 	};
 
 	void Update();
+
+	bool CheckNewGlass();
+	std::shared_ptr<Glass> GetGlass();
+
+	int GetYIndex();
 };
 
