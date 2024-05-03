@@ -59,7 +59,7 @@ void Player::Update()
 	}
 	else
 	{
-		if (SDL_GetTicks() >= yTicks + 700)
+		if (SDL_GetTicks() >= yTicks + 500)
 		{
 			endTimerY();
 		}
@@ -70,8 +70,12 @@ void Player::Update()
 	{
 		if (spaceTimer != true)
 		{
-			spaceTicks = startTimerSpace();
+			if (dstRect.x == 776)
+			{
+				spaceTicks = startTimerSpace();
+			}
 		}
+		std::cout << (SDL_GetTicks() >= spaceTicks + 700) << std::endl;
 	}
 	else
 	{

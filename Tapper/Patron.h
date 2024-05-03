@@ -8,6 +8,7 @@ private:
 	int yIndex{ 0 };
 
 	bool canLeave{ false };
+	bool reachedEnd{ false };
 
 	Uint64 TimerStart();
 
@@ -35,6 +36,8 @@ public:
 
 	bool GetReturnDrink() { return returnDrink; }
 	void SetReturnDrink(bool _return) { returnDrink = _return; }
+
+	bool GetReachedEnd() { return reachedEnd; }
 
 	int GetYIndex() { return yIndex; }
 };

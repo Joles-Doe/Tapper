@@ -27,6 +27,8 @@ public:
 
 	int GetVectorSize() { return enemyVector.size(); }
 
+	void ClearVector() { enemyVector.clear(); }
+
 	SDL_Rect GetIndexedRect(int _index) { return enemyVector[_index].gameObject->GetRect(); }
 
 	bool GetIndexedDestroy(int _index) { return enemyVector[_index].gameObject->GetDestroy(); }
@@ -39,6 +41,8 @@ public:
 	void SetIndexedReturn(int _index, bool _return) { enemyVector[_index].gameObject->SetReturnDrink(_return); }
 
 	int GetIndexedYIndex(int _index) { return enemyVector[_index].gameObject->GetYIndex(); }
+
+	bool GetIndexedReachedEnd(int _index) { return enemyVector[_index].gameObject->GetReachedEnd(); }
 
 	void Update();
 	void Draw() {}

@@ -29,6 +29,7 @@ public:
 	SDL_Rect GetIndexedRect(int _index) { return projectileVector[_index].gameObject->GetRect(); }
 
 	bool GetIndexedMoveLeft(int _index) { return projectileVector[_index].gameObject->GetMoveLeft(); }
+	bool GetIndexedGlassEnd(int _index) { return projectileVector[_index].gameObject->GetGlassEnd(); }
 
 	void SetIndexedDestroy(int _index, bool _destroy) { projectileVector[_index].gameObject->SetDestroy(_destroy); }
 

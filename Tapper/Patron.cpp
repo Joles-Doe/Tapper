@@ -97,6 +97,10 @@ void Patron::Update()
 	{
 		destroy = true;
 	}
+	else if (dstRect.x > 776)
+	{
+		reachedEnd = true;
+	}
 }
 
 Uint64 Patron::TimerStart()

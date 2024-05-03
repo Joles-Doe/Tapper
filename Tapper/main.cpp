@@ -63,6 +63,7 @@ void Game(Engine& sdlEngine, const float frameDelay)
 	Uint64 frameStart{ 0 };
 	Uint64 frameEnd{ 0 };
 
+	int lives{ 3 };
 	bool startNewRound{ true };
 	int round{ 0 };
 	Uint64 roundTimer{ 0 };
@@ -91,6 +92,7 @@ void Game(Engine& sdlEngine, const float frameDelay)
 			enemyCount = 0;
 			maxEnemies = (3 * round) + 3;
 			projectileHandler->ClearVector();
+			enemyHandler->ClearVector();
 			roundTimer = TimerStart();
 		}
 		else
@@ -126,6 +128,29 @@ void Game(Engine& sdlEngine, const float frameDelay)
 						startNewRound = true;
 					}
 				}
+			}
+
+			for (int x = 0; x < projectileHandler->GetVectorSize(); x++)
+			{
+				if (projectileHandler->GetIndexedGlassEnd(x) == true)
+				{
+					startNewRound = true;
+					lives--;
+					break;
+				}
+			}
+			for (int x = 0; x < enemyHandler->GetVectorSize(); x++)
+			{
+				if (enemyHandler->GetIndexedReachedEnd(x) == true)
+				{
+					startNewRound = true;
+					lives--;
+					break;
+				}
+			}
+			if (lives == 0)
+			{
+				sdlEngine.SetLoopState(false);
 			}
 		}
 

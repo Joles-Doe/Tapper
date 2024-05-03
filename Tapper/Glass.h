@@ -7,6 +7,7 @@ private:
 	int counterPositions[3]{ 262, 505, 750 };
 	int direction{ 0 };
 	bool moveLeft{ false };
+	bool glassReachedEnd{ false };
 public:
 	Glass(SDL_Renderer* _rend, int _posX, int _indexY, const std::string& _direction) : GameObject(_rend) {
 		SetRectScale(50, 50);
@@ -23,6 +24,7 @@ public:
 	}
 
 	bool GetMoveLeft() { return moveLeft; }
+	bool GetGlassEnd() { return glassReachedEnd; }
 
 	void Update();
 };
