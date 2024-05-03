@@ -26,6 +26,11 @@ Engine::Engine()
 	}
 	SDL_RenderSetLogicalSize(renderer, windowWidth, windowHeight);
 
+	if (TTF_Init() < 0)
+	{
+		std::cout << "TTF creation FAILED " << TTF_GetError() << std::endl;
+	}
+
 	controller = new EventController();
 }
 

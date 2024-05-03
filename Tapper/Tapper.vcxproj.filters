@@ -45,6 +45,9 @@
     <ClCompile Include="Patron.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -74,6 +77,9 @@
     <ClInclude Include="Patron.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Back Wall.bmp">
@@ -100,5 +106,8 @@
     <Image Include="PatronPlaceholder.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="munro.ttf" />
   </ItemGroup>
 </Project>

@@ -167,11 +167,11 @@ bool EventController::GetKeyDown()
 bool EventController::GetMouseDown(const std::string& _button)
 {
 	bool isDown{ false };
-	if (_button == "1" || _button == "left" || _button == "LEFT")
+	if (_button == "1" || _button == "left" || _button == "LEFT" || _button == "l" || _button == "L")
 	{
 		isDown = mouse1Down;
 	}
-	if (_button == "2" || _button == "right" || _button == "RIGHT")
+	if (_button == "2" || _button == "right" || _button == "RIGHT" || _button == "r" || _button == "R")
 	{
 		isDown = mouse2Down;
 	}

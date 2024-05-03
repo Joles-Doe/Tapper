@@ -1,5 +1,7 @@
 #pragma once
 #include <SDL.h>
+#include <SDL_mixer.h>
+#include <SDL_ttf.h>
 #include "GameObject.h"
 #include "EventController.h"
 #include <iostream>
@@ -64,4 +66,9 @@ public:
 	bool GetLoopState();
 	//Sets current game state
 	void SetLoopState(bool _state);
+
+	//Returns the width of the window
+	int GetWindowWidth() { return windowWidth; }
+	//Returns the height of the window
+	int GetWindowHeight() { return windowHeight; }
 };

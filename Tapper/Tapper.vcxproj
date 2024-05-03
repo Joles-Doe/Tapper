@@ -158,6 +158,7 @@
     <ClCompile Include="Patron.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ProjectileHandler.cpp" />
+    <ClCompile Include="Text.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EnemyHandler.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="Patron.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ProjectileHandler.h" />
+    <ClInclude Include="Text.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Back Wall.bmp" />
@@ -179,6 +181,9 @@
     <Image Include="PatronPlaceholder.bmp" />
     <Image Include="PlayerPlaceholder.bmp" />
     <Image Include="Side Wall.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="munro.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

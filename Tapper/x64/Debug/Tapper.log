@@ -2,6 +2,7 @@
 C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.35.32215\include\optional(12): warning STL4038: The contents of <optional> are available only with C++17 or later.
 D:\s5623772\Tapper\Tapper\ProjectileHandler.h(27): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
 D:\s5623772\Tapper\Tapper\EnemyHandler.h(28): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-D:\s5623772\Tapper\Tapper\main.cpp(16,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\s5623772\Tapper\Tapper\main.cpp(201,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+D:\s5623772\Tapper\Tapper\main.cpp(18,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\s5623772\Tapper\Tapper\main.cpp(88,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+D:\s5623772\Tapper\Tapper\main.cpp(290,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
   Tapper.vcxproj -> D:\s5623772\Tapper\x64\Debug\Tapper.exe

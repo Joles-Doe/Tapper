@@ -36,6 +36,8 @@ public:
 	void PollEvents();
 	//Returns true or false if quit event has been raised
 	bool GetQuitState();
+	//Sets the quitState variable
+	void SetQuitState(bool _input) { programQuit = _input; }
 	//Returns true or false if specific key has been pressed
 	bool GetKeyDown(const std::string& _key);
 	//Returns true or false if any key has been pressed

@@ -2,12 +2,14 @@
 #include "Engine.h"
 #include "GameObject.h"
 #include "Background.h"
+#include "Text.h"
 #include "Player.h"
 #include "ProjectileHandler.h"
 #include "EnemyHandler.h"
 #include <iostream>
 #include <string>
 
+bool Menu(Engine& sdlEngine, const float frameDelay);
 void Game(Engine& sdlEngine, const float frameDelay);
 Uint64 TimerStart();
 
@@ -20,9 +22,79 @@ int main(int argc, char* argv[])
 
 	Engine sdlEngine = Engine();
 
-	Game(sdlEngine, frameDelay);
+	bool menuReturn{ false };
+	while (true)
+	{
+		menuReturn = Menu(sdlEngine, frameDelay);
+		Game(sdlEngine, frameDelay);
+
+		if (sdlEngine.GetController()->GetQuitState() == true || menuReturn == true)
+		{
+			break;
+		}
+	}
 
 	return 0;
+}
+
+bool Menu(Engine& sdlEngine, const float frameDelay)
+{
+	std::shared_ptr<Text> titleText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 200);
+	titleText->ChangeColor(255, 255, 255);
+	titleText->ChangeText("TAPPER");
+	titleText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (titleText->GetRect().w / 2), 50);
+	sdlEngine.AddLayerElement(titleText, 0);
+
+	std::shared_ptr<Text> startText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 100);
+	startText->ChangeColor(255, 255, 255);
+	startText->ChangeText("START");
+	startText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (startText->GetRect().w / 2), sdlEngine.GetWindowHeight() / 2);
+	sdlEngine.AddLayerElement(startText, 0);
+
+	Uint64 frameStart{ 0 };
+	Uint64 frameEnd{ 0 };
+
+	bool startButtonClicked{ false };
+
+	SDL_Rect startTextRect = startText->GetRect();
+	SDL_Rect mouseRect{ 0 };
+	mouseRect.w = 1;
+	mouseRect.h = 1;
+
+	sdlEngine.SetLoopState(true);
+	while (sdlEngine.GetLoopState())
+	{
+		frameStart = SDL_GetTicks();
+
+		sdlEngine.Reset();
+		sdlEngine.ControllerPollEvents();
+		sdlEngine.Update();
+
+		if (sdlEngine.GetController()->GetMouseDown("l") == true || sdlEngine.GetController()->GetMouseDown("r") == true)
+		{
+			SDL_GetMouseState(&mouseRect.x, &mouseRect.y);
+			startButtonClicked = SDL_HasIntersection(&startTextRect, &mouseRect);
+			if (startButtonClicked == true)
+			{
+				sdlEngine.SetLoopState(false);
+			}
+		}
+
+		sdlEngine.Present();
+		
+		frameEnd = SDL_GetTicks();
+		if (frameDelay > frameEnd - frameStart)
+		{
+			SDL_Delay(frameDelay - (frameEnd - frameStart));
+		}
+	}
+
+	titleText.reset();
+	startText.reset();
+
+	sdlEngine.Reset();
+
+	return startButtonClicked;
 }
 
 void Game(Engine& sdlEngine, const float frameDelay)
@@ -56,6 +128,12 @@ void Game(Engine& sdlEngine, const float frameDelay)
 	std::shared_ptr<EnemyHandler> enemyHandler = std::make_shared<EnemyHandler>(sdlEngine.GetRenderer(), &sdlEngine);
 	sdlEngine.AddLayerElement(enemyHandler, 0);
 
+	//Creation of text
+	std::shared_ptr<Text> livesText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 60);
+	livesText->ChangeText("Lives: 3");
+	livesText->SetRectPos(30, 30);
+	sdlEngine.AddLayerElement(livesText, 8);
+
 	SDL_Rect collisionA{ 0 };
 	SDL_Rect collisionB{ 0 };
 	SDL_Rect playerRect{ 0 };
@@ -65,6 +143,7 @@ void Game(Engine& sdlEngine, const float frameDelay)
 
 	int lives{ 3 };
 	bool startNewRound{ true };
+	bool lostLife{ false };
 	int round{ 0 };
 	Uint64 roundTimer{ 0 };
 
@@ -85,7 +164,15 @@ void Game(Engine& sdlEngine, const float frameDelay)
 
 		if (startNewRound == true)
 		{
-			round++;
+			if (lostLife == true)
+			{
+				livesText->ChangeText("Lives: " + std::to_string(lives) );
+				livesText->SetRectPos(30, 30);
+			}
+			else
+			{
+				round++;
+			}
 			startNewRound = false;
 			spawnEnemies = false;
 			spawnNew = true;
@@ -135,6 +222,7 @@ void Game(Engine& sdlEngine, const float frameDelay)
 				if (projectileHandler->GetIndexedGlassEnd(x) == true)
 				{
 					startNewRound = true;
+					lostLife = true;
 					lives--;
 					break;
 				}
@@ -144,6 +232,7 @@ void Game(Engine& sdlEngine, const float frameDelay)
 				if (enemyHandler->GetIndexedReachedEnd(x) == true)
 				{
 					startNewRound = true;
+					lostLife = true;
 					lives--;
 					break;
 				}
@@ -201,6 +290,18 @@ void Game(Engine& sdlEngine, const float frameDelay)
 			SDL_Delay(frameDelay - (frameEnd - frameStart));
 		}
 	}
+
+	floor.reset();
+	backWall.reset();
+	barCounters.reset();
+	sideWall.reset();
+	player.reset();
+	projectileHandler.reset();
+	enemyHandler.reset();
+	
+	livesText.reset();
+
+	sdlEngine.Reset();
 }
 
 Uint64 TimerStart()
