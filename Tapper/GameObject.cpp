@@ -73,5 +73,8 @@ bool GameObject::GetDestroy()
 
 void GameObject::Draw()
 {
-	SDL_RenderCopy(renderer, imageTexture, &srcRect, &dstRect);
+	if (visible == true)
+	{
+		SDL_RenderCopy(renderer, imageTexture, &srcRect, &dstRect);
+	}
 }

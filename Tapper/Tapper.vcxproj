@@ -174,10 +174,16 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Back Wall.bmp" />
+    <Image Include="Barman.bmp" />
     <Image Include="Counter Single.bmp" />
     <Image Include="Counters.bmp" />
     <Image Include="Floor.bmp" />
     <Image Include="GlassPlaceholder.bmp" />
+    <Image Include="Patron1.bmp" />
+    <Image Include="Patron2.bmp" />
+    <Image Include="Patron3.bmp" />
+    <Image Include="Patron4.bmp" />
+    <Image Include="Patron5.bmp" />
     <Image Include="PatronPlaceholder.bmp" />
     <Image Include="PlayerPlaceholder.bmp" />
     <Image Include="Side Wall.bmp" />

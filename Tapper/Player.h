@@ -26,14 +26,27 @@ private:
 	std::shared_ptr<Glass> currentGlass{ 0 };
 	bool newGlass{ false };
 
+	void SpriteUpdate();
+	SDL_Rect srcRect{ 0 };
+	bool animation_ChangeToMove{ false };
+	bool animation_ChangeToDrink{ false };
+	bool animation_ChangeToIdle{ true };
+	bool animation_ChangeToPour{ false };
+	bool animation_ChangeToDeath{ false };
+	bool animationSingleSprite{ false };
+	int animationColumn{ 0 };
+	Uint64 animationTimer{ 0 };
+	int animationDelay{ 0 };
+	int animationStep{ 0 };
+	int animationMaxSteps{ 0 };
 public:
 	Player(SDL_Renderer* _rend, EventController* _controller) : GameObject(_rend) {
-		SetRectScale(75, 175);
 		SetRectPos(counterEndPos, 200);
 		controller = _controller;
 	};
 
 	void Update();
+	void Draw();
 
 	bool CheckNewGlass();
 	std::shared_ptr<Glass> GetGlass();

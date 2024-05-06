@@ -106,6 +106,24 @@
     <Image Include="PatronPlaceholder.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Patron1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Patron2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Patron3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Patron4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Patron5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Barman.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="munro.ttf" />

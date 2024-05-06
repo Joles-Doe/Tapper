@@ -8,6 +8,7 @@ void Patron::Update()
 		//If true, pause for a second
 		if (idle == true)
 		{
+			animation_ChangeToIdle = true;
 			if (SDL_GetTicks() > idleTimer + 1000)
 			{
 				idle = false;
@@ -41,6 +42,7 @@ void Patron::Update()
 					}
 				}
 			}
+			animation_ChangeToMove = true;
 			dstRect.x += 1;
 		}
 	}
@@ -49,6 +51,7 @@ void Patron::Update()
 		//If true, pause to drink
 		if (drink == true)
 		{
+			animation_ChangeToDrink = true;
 			if (SDL_GetTicks() > drinkTimer + 2000)
 			{
 				drink = false;
@@ -88,10 +91,10 @@ void Patron::Update()
 					}
 				}
 			}
+			animation_ChangeToReturn = true;
 			dstRect.x -= 3;
 		}
 	}
-
 
 	if (dstRect.x < -200 && canLeave == true)
 	{
@@ -101,6 +104,12 @@ void Patron::Update()
 	{
 		reachedEnd = true;
 	}
+}
+
+void Patron::Draw()
+{
+	SpriteUpdate();
+	SDL_RenderCopy(renderer, imageTexture, &srcRect, &dstRect);
 }
 
 Uint64 Patron::TimerStart()
@@ -118,4 +127,98 @@ bool Patron::CheckDrink()
 {
 	int x = rand() % 3;
 	return x == 2;
+}
+
+void Patron::SpriteUpdate()
+{
+	/*
+	column = 64 * iterator
+	idle = 40 x 56 (distance between sprites - 64 * iterator)
+	walking = 44 x 56 (distance between sprites - 64 * iterator)
+	drinking = 52 x 56 (single sprite)
+	leaving = 64 x 56 (single sprite)*/
+
+	if (animation_ChangeToIdle == true)
+	{
+		//check if animation is the same
+		if (animationColumn != 0)
+		{
+			animationSingleSprite = false;
+			animation_ChangeToIdle = false;
+			srcRect.w = 44;
+			dstRect.w = 44 * 2;
+			srcRect.h = 56;
+			dstRect.h = 56 * 2;
+			animationColumn = 0;
+			animationStep = 0;
+			animationMaxSteps = 3;
+			animationTimer = SDL_GetTicks();
+			animationDelay = 250;
+		}
+	}
+	if (animation_ChangeToMove == true)
+	{
+		if (animationColumn != 1)
+		{
+			animationSingleSprite = false;
+			animation_ChangeToMove = false;
+			srcRect.w = 44;
+			dstRect.w = 44 * 2;
+			srcRect.h = 56;
+			dstRect.h = 56 * 2;
+			animationColumn = 1;
+			animationStep = 0;
+			animationMaxSteps = 3;
+			animationTimer = SDL_GetTicks();
+			animationDelay = 250;
+		}
+	}
+	if (animation_ChangeToDrink == true)
+	{
+		if (animationColumn != 2)
+		{
+			animationSingleSprite = true;
+			animation_ChangeToDrink = false;
+			srcRect.w = 52;
+			dstRect.w = 52 * 2;
+			srcRect.h = 56;
+			dstRect.h = 56 * 2;
+			animationColumn = 2;
+			animationStep = 0;
+		}
+	}
+	if (animation_ChangeToReturn == true)
+	{
+		if (animationColumn != 3)
+		{
+			animationSingleSprite = true;
+			animation_ChangeToReturn = false;
+			srcRect.w = 64;
+			dstRect.w = 64 * 2;
+			srcRect.h = 56;
+			dstRect.h = 56 * 2;
+			animationColumn = 3;
+			animationStep = 0;
+		}
+	}
+
+	if (animationSingleSprite == false)
+	{
+		if (SDL_GetTicks() > animationTimer + animationDelay)
+		{
+			animationStep++;
+			if (animationStep >= animationMaxSteps)
+			{
+				animationStep = 0;
+			}
+			animationTimer = SDL_GetTicks();
+			srcRect.x = 64 * animationStep;
+			srcRect.y = 64 * animationColumn;
+		}
+	}
+	else
+	{
+		srcRect.x = 0;
+		srcRect.y = 64 * animationColumn;
+	}
 }

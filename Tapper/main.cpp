@@ -118,7 +118,7 @@ void Game(Engine& sdlEngine, const float frameDelay)
 
 	//Creation of the player
 	std::shared_ptr<Player> player = std::make_shared<Player>(sdlEngine.GetRenderer(), sdlEngine.GetController());
-	player->LoadImage("PlayerPlaceholder.bmp");
+	player->LoadImage("Barman.bmp");
 	sdlEngine.AddLayerElement(player, 5);
 
 	//Creation of the projectile and enemy handlers
@@ -134,6 +134,11 @@ void Game(Engine& sdlEngine, const float frameDelay)
 	livesText->SetRectPos(30, 30);
 	sdlEngine.AddLayerElement(livesText, 8);
 
+	std::shared_ptr<Text> roundText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 80);
+	roundText->ChangeText("New Round - Press any key to start");
+	roundText->SetRectPos(sdlEngine.GetWindowWidth() / 2 - roundText->GetRect().w / 2, sdlEngine.GetWindowHeight() / 2 - roundText->GetRect().h);
+	sdlEngine.AddLayerElement(roundText, 8);
+
 	SDL_Rect collisionA{ 0 };
 	SDL_Rect collisionB{ 0 };
 	SDL_Rect playerRect{ 0 };
@@ -143,6 +148,8 @@ void Game(Engine& sdlEngine, const float frameDelay)
 
 	int lives{ 3 };
 	bool startNewRound{ true };
+	bool addRound{ false };
+	bool showText{ true };
 	bool lostLife{ false };
 	int round{ 0 };
 	Uint64 roundTimer{ 0 };
@@ -164,23 +171,35 @@ void Game(Engine& sdlEngine, const float frameDelay)
 
 		if (startNewRound == true)
 		{
+			if (showText == true)
+			{
+				showText = false;
+				roundText->SetVisible(true);
+				projectileHandler->ClearVector();
+				enemyHandler->ClearVector();
+			}
 			if (lostLife == true)
 			{
-				livesText->ChangeText("Lives: " + std::to_string(lives) );
+				livesText->ChangeText("Lives: " + std::to_string(lives));
 				livesText->SetRectPos(30, 30);
 			}
-			else
+			if (addRound == true)
 			{
+				addRound = false;
 				round++;
 			}
-			startNewRound = false;
-			spawnEnemies = false;
-			spawnNew = true;
-			enemyCount = 0;
-			maxEnemies = (3 * round) + 3;
-			projectileHandler->ClearVector();
-			enemyHandler->ClearVector();
-			roundTimer = TimerStart();
+
+			if (sdlEngine.GetController()->GetKeyDown())
+			{
+				roundText->SetVisible(false);
+				startNewRound = false;
+				spawnEnemies = false;
+				spawnNew = true;
+				enemyCount = 0;
+				maxEnemies = (3 * round) + 3;
+				roundTimer = TimerStart();
+				showText = true;
+			}
 		}
 		else
 		{
@@ -213,6 +232,7 @@ void Game(Engine& sdlEngine, const float frameDelay)
 					if (enemyHandler->GetVectorSize() == 0)
 					{
 						startNewRound = true;
+						addRound = true;
 					}
 				}
 			}
@@ -241,43 +261,42 @@ void Game(Engine& sdlEngine, const float frameDelay)
 			{
 				sdlEngine.SetLoopState(false);
 			}
-		}
-
-		if (player->CheckNewGlass() == true)
-		{
-			projectileHandler->AddProjectile(player->GetRectX(), player->GetYIndex(), "l", 5);
-		}
-
-		for (int x = 0; x < enemyHandler->GetVectorSize(); x++)
-		{
-			if (enemyHandler->GetIndexedReturn(x) == true)
+			if (player->CheckNewGlass() == true)
 			{
-				projectileHandler->AddProjectile(enemyHandler->GetIndexedRect(x).x, enemyHandler->GetIndexedYIndex(x), "r", 5);
-				enemyHandler->SetIndexedReturn(x, false);
+				projectileHandler->AddProjectile(player->GetRectX(), player->GetYIndex(), "l", 5);
 			}
-		}
 
-		for (int x = 0; x < projectileHandler->GetVectorSize(); x++)
-		{
-			collisionA = projectileHandler->GetIndexedRect(x);
-			for (int y = 0; y < enemyHandler->GetVectorSize(); y++)
+			for (int x = 0; x < enemyHandler->GetVectorSize(); x++)
 			{
-				collisionB = enemyHandler->GetIndexedRect(y);
-				if (SDL_HasIntersection(&collisionA, &collisionB))
+				if (enemyHandler->GetIndexedReturn(x) == true)
 				{
-					if (enemyHandler->GetIndexedLeave(y) == false && projectileHandler->GetIndexedMoveLeft(x) == true)
-					{
-						projectileHandler->SetIndexedDestroy(x, true);
-						enemyHandler->SetIndexedLeave(y, true);
-					}
+					projectileHandler->AddProjectile(enemyHandler->GetIndexedRect(x).x, enemyHandler->GetIndexedYIndex(x), "r", 5);
+					enemyHandler->SetIndexedReturn(x, false);
 				}
 			}
-			playerRect = player->GetRect();
-			if (SDL_HasIntersection(&collisionA, &playerRect))
+
+			for (int x = 0; x < projectileHandler->GetVectorSize(); x++)
 			{
-				if (projectileHandler->GetIndexedMoveLeft(x) == false)
+				collisionA = projectileHandler->GetIndexedRect(x);
+				for (int y = 0; y < enemyHandler->GetVectorSize(); y++)
 				{
-					projectileHandler->SetIndexedDestroy(x, true);
+					collisionB = enemyHandler->GetIndexedRect(y);
+					if (SDL_HasIntersection(&collisionA, &collisionB))
+					{
+						if (enemyHandler->GetIndexedLeave(y) == false && projectileHandler->GetIndexedMoveLeft(x) == true)
+						{
+							projectileHandler->SetIndexedDestroy(x, true);
+							enemyHandler->SetIndexedLeave(y, true);
+						}
+					}
+				}
+				playerRect = player->GetRect();
+				if (SDL_HasIntersection(&collisionA, &playerRect))
+				{
+					if (projectileHandler->GetIndexedMoveLeft(x) == false)
+					{
+						projectileHandler->SetIndexedDestroy(x, true);
+					}
 				}
 			}
 		}

@@ -19,7 +19,7 @@ bool EnemyHandler::EnemyPredicate(const Enemy& _input)
 void EnemyHandler::AddEnemy(int _y, int _layer)
 {
 	std::shared_ptr<Patron> newPatron = std::make_shared<Patron>(renderer, _y);
-	newPatron->LoadImage("PatronPlaceholder.bmp");
+	newPatron->LoadImage("Patron" + std::to_string(1 + rand() % 5) + ".bmp");
 
 	Enemy newEnemy(newPatron);
 	enemyVector.push_back(newEnemy);

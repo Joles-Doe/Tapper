@@ -2,22 +2,37 @@
 
 void Player::Update()
 {
+	animation_ChangeToIdle = true;
 	//Left and right movement
 	if (controller->GetKeyDown("a") || controller->GetKeyDown("left"))
 	{
 		dstRect.x -= 2;
+		animation_ChangeToMove = true;
+		animation_ChangeToIdle = false;
 	}
 	if (controller->GetKeyDown("d") || controller->GetKeyDown("right"))
 	{
 		dstRect.x += 2;
+		animation_ChangeToMove = true;
+		animation_ChangeToIdle = false;
 	}
 	//Left and right clamping
 	if (dstRect.x <= 38)
 	{
+		if (animation_ChangeToMove == true)
+		{
+			animation_ChangeToMove = false;
+			animation_ChangeToIdle = true;
+		}
 		dstRect.x = 38;
 	}
 	if (dstRect.x >= 776)
 	{
+		if (animation_ChangeToMove == true)
+		{
+			animation_ChangeToMove = false;
+			animation_ChangeToIdle = true;
+		}
 		dstRect.x = counterEndPos;
 	}
 
@@ -70,12 +85,16 @@ void Player::Update()
 	{
 		if (spaceTimer != true)
 		{
-			if (dstRect.x == 776)
+			if (dstRect.x >= 776)
 			{
 				spaceTicks = startTimerSpace();
 			}
 		}
-		std::cout << (SDL_GetTicks() >= spaceTicks + 700) << std::endl;
+		if (dstRect.x >= 776)
+		{
+			animation_ChangeToPour = true;
+			animation_ChangeToIdle = false;
+		}
 	}
 	else
 	{
@@ -89,6 +108,19 @@ void Player::Update()
 			}
 		}
 		endTimerSpace();
+	}
+}
+
+void Player::Draw()
+{
+	SpriteUpdate();
+	if (animationColumn != 3)
+	{
+		SDL_RenderCopyEx(renderer, imageTexture, &srcRect, &dstRect, 0, NULL, SDL_FLIP_HORIZONTAL);
+	}
+	else
+	{
+		SDL_RenderCopy(renderer, imageTexture, &srcRect, &dstRect);
 	}
 }
 
@@ -135,4 +167,119 @@ Uint64 Player::startTimerSpace()
 void Player::endTimerSpace()
 {
 	spaceTimer = false;
+}
+
+void Player::SpriteUpdate()
+{
+	/*
+	column = 64 * iterator
+	idle = 40 x 56 (distance between sprites - 64 * iterator)
+	walking = 44 x 56 (distance between sprites - 64 * iterator)
+	drinking = 52 x 56 (single sprite)
+	pouring = 64 x 56 (distance between sprites - 64 * iterator)
+	death = 52 x 56 (single sprite)*/
+
+	if (animation_ChangeToIdle == true)
+	{
+		//check if animation is the same
+		if (animationColumn != 0)
+		{
+			animationSingleSprite = false;
+			animation_ChangeToIdle = false;
+			srcRect.w = 44;
+			dstRect.w = 44 * 2;
+			srcRect.h = 56;
+			dstRect.h = 56 * 2;
+			animationColumn = 0;
+			animationStep = 0;
+			animationMaxSteps = 3;
+			animationTimer = SDL_GetTicks();
+			animationDelay = 250;
+		}
+	}
+	if (animation_ChangeToMove == true)
+	{
+		if (animationColumn != 1)
+		{
+			animationSingleSprite = false;
+			animation_ChangeToMove = false;
+			srcRect.w = 44;
+			dstRect.w = 44 * 2;
+			srcRect.h = 56;
+			dstRect.h = 56 * 2;
+			animationColumn = 1;
+			animationStep = 0;
+			animationMaxSteps = 3;
+			animationTimer = SDL_GetTicks();
+			animationDelay = 250;
+		}
+	}
+	if (animation_ChangeToDrink == true)
+	{
+		if (animationColumn != 2)
+		{
+			animationSingleSprite = true;
+			animation_ChangeToDrink = false;
+			srcRect.w = 52;
+			dstRect.w = 52 * 2;
+			srcRect.h = 56;
+			dstRect.h = 56 * 2;
+			animationColumn = 2;
+			animationStep = 0;
+		}
+	}
+	if (animation_ChangeToPour == true)
+	{
+		if (animationColumn != 3)
+		{
+			animationSingleSprite = false;
+			animation_ChangeToPour = false;
+			srcRect.w = 64;
+			dstRect.w = 64 * 2;
+			srcRect.h = 56;
+			dstRect.h = 56 * 2;
+			animationColumn = 3;
+			animationStep = 0;
+			animationMaxSteps = 1;
+			animationTimer = SDL_GetTicks();
+			animationDelay = 700;
+		}
+	}
+	if (animation_ChangeToDeath == true)
+	{
+		if (animationColumn != 4)
+		{
+			animationSingleSprite = true;
+			animation_ChangeToDeath = false;
+			srcRect.w = 52;
+			dstRect.w = 52 * 2;
+			srcRect.h = 56;
+			dstRect.h = 56 * 2;
+			animationColumn = 4;
+			animationStep = 0;
+		}
+	}
+
+	if (animationSingleSprite == false)
+	{
+		if (SDL_GetTicks() > animationTimer + animationDelay)
+		{
+			animationStep++;
+			if (animationStep > animationMaxSteps)
+			{
+				if (animationColumn != 3)
+				{
+					animationStep = 0;
+				}
+				else
+				{
+					animationStep = 1;
+				}
+			}
+			animationTimer = SDL_GetTicks();
+			
+		}
+	}
+	srcRect.x = 64 * animationStep;
+	srcRect.y = 64 * animationColumn;
 }

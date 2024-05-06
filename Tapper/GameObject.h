@@ -13,7 +13,8 @@ protected:
 	SDL_Rect dstRect{ 0 };
 
 	int velocity[2]{ 0, 0 };
-	bool destroy{ 0 };
+	bool destroy{ false	 };
+	bool visible{ true };
 public:
 	GameObject(SDL_Renderer* _rend);
 
@@ -36,6 +37,11 @@ public:
 	bool GetDestroy();
 	//Sets the destroy variable
 	void SetDestroy(bool _destroy) { destroy = _destroy; }
+
+	//Returns the visible variable
+	bool GetVisible() { return visible; }
+	//Sets the visible variable
+	void SetVisible(bool _visible) { visible = _visible; }
 
 	int GetVelocityX() { return velocity[0]; }
 	int GetVelocityY() { return velocity[1]; }
