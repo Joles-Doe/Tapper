@@ -27,7 +27,7 @@ public:
 	ProjectileHandler(SDL_Renderer* _rend, Engine* _engine) : GameObject(_rend) { engine = _engine; }
 
 	//Adds a projectile to the vector and adds it to the engine
-	void AddProjectile(int _X, int _Y, std::string _direction, int _layer);
+	void AddProjectile(int _X, int _Y, std::string _direction, int _layer, bool _isFull);
 
 	//Returns the size of the projectile vector
 	int GetVectorSize() { return projectileVector.size(); }

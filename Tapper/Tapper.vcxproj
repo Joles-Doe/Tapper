@@ -175,6 +175,8 @@
   <ItemGroup>
     <Image Include="Back Wall.bmp" />
     <Image Include="Barman.bmp" />
+    <Image Include="BeerEmpty.bmp" />
+    <Image Include="BeerFull.bmp" />
     <Image Include="Counter Single.bmp" />
     <Image Include="Counters.bmp" />
     <Image Include="Floor.bmp" />

@@ -332,7 +332,7 @@ void Game(Engine& sdlEngine, const float frameDelay)
 			//Check if a new glass needs to be spawned (moving left to enemies)
 			if (player->CheckNewGlass() == true)
 			{
-				projectileHandler->AddProjectile(player->GetRectX(), player->GetYIndex(), "l", 5);
+				projectileHandler->AddProjectile(player->GetRectX(), player->GetYIndex(), "l", 5, true);
 			}
 
 			//Check if a new glass needs to be spawned (moving right to barman)
@@ -340,7 +340,7 @@ void Game(Engine& sdlEngine, const float frameDelay)
 			{
 				if (enemyHandler->GetIndexedReturn(x) == true)
 				{
-					projectileHandler->AddProjectile(enemyHandler->GetIndexedRect(x).x, enemyHandler->GetIndexedYIndex(x), "r", 5);
+					projectileHandler->AddProjectile(enemyHandler->GetIndexedRect(x).x, enemyHandler->GetIndexedYIndex(x), "r", 5, false);
 					enemyHandler->SetIndexedReturn(x, false);
 				}
 			}

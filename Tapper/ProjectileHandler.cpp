@@ -17,11 +17,20 @@ bool ProjectileHandler::ProjectilePredicate(const Projectile& _input)
 	}
 }
 
-void ProjectileHandler::AddProjectile(int _x, int _y, std::string _direction, int _layer)
+void ProjectileHandler::AddProjectile(int _x, int _y, std::string _direction, int _layer, bool _isFull)
 {
 	//Creates a new shared pointer and gives it a sprite
 	std::shared_ptr<Glass> newGlass = std::make_shared<Glass>(renderer, _x, _y, _direction);
-	newGlass->LoadImage("GlassPlaceholder.bmp");
+	//If the projectile needs to be full
+	if (_isFull == true)
+	{
+		newGlass->LoadImage("BeerFull.bmp");
+	}
+	else
+	{
+		newGlass->LoadImage("BeerEmpty.bmp");
+	}
+	newGlass->SetRectScale(50, 42);
 	//Assigns the shared pointer to projectile struct and adds it to the vector
 	Projectile newProjectile(newGlass);
 	projectileVector.push_back(newProjectile);

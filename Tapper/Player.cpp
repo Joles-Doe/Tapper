@@ -123,8 +123,6 @@ void Player::Update()
 				if (SDL_GetTicks() >= spaceTicks + 700)
 				{
 					//Create a new glass
-					std::shared_ptr<Glass> currentGlass = std::make_shared<Glass>(renderer, dstRect.x, yIndex, "l");
-					currentGlass->LoadImage("GlassPlaceholder.bmp");
 					newGlass = true;
 				}
 			}
@@ -179,7 +177,12 @@ Uint64 Player::StartTimerSpace()
 
 void Player::EndTimerSpace()
 {
-	spaceTimer = false;
+	if (spaceTimer == true)
+	{
+		spaceTimer = false;
+		animationStep = 0;
+		animationTimer = SDL_GetTicks();
+	}	
 }
 
 void Player::SpriteUpdate()
