@@ -1,12 +1,20 @@
-﻿  main.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\optional(11): warning STL4038: The contents of <optional> are available only with C++17 or later.
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\ProjectileHandler.h(27,52): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'main.cpp')
-  
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\EnemyHandler.h(28,47): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'main.cpp')
-  
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\main.cpp(18,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\main.cpp(88,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\main.cpp(309,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-  Tapper.vcxproj -> C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\x64\Debug\Tapper.exe
+﻿  Background.cpp
+  EnemyHandler.cpp
+D:\s5623772\Tapper\Tapper\EnemyHandler.h(32): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Engine.cpp
+  EventController.cpp
+  GameObject.cpp
+  Glass.cpp
+  Patron.cpp
+  Player.cpp
+  ProjectileHandler.cpp
+D:\s5623772\Tapper\Tapper\ProjectileHandler.h(33): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Text.cpp
+  main.cpp
+D:\s5623772\Tapper\Tapper\ProjectileHandler.h(33): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+D:\s5623772\Tapper\Tapper\EnemyHandler.h(32): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+D:\s5623772\Tapper\Tapper\main.cpp(19,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\s5623772\Tapper\Tapper\main.cpp(92,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+D:\s5623772\Tapper\Tapper\main.cpp(331,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+  Generating Code...
+  Tapper.vcxproj -> D:\s5623772\Tapper\x64\Debug\Tapper.exe

@@ -18,7 +18,9 @@ void Text::ChangeColor(int _r, int _g, int _b)
 
 void Text::ChangeText(const std::string& _text)
 {
+	//Creates a surface that will contain the text
 	SDL_Surface* textSurface;
+	//Draws the text onto the surface
 	textSurface = TTF_RenderText_Solid(font, _text.c_str(), color);
 	if (!textSurface)
 	{
@@ -32,6 +34,11 @@ void Text::ChangeText(const std::string& _text)
 	}
 	else
 	{
+		//Checks if a texture for the object already exists, and purges it if so
+		if (imageTexture != nullptr)
+		{
+			SDL_DestroyTexture(imageTexture);
+		}
 		//Create a texture from the surface
 		imageTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 		//Free the surface from memory

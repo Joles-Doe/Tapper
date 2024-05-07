@@ -1,24 +1,22 @@
 #include "Engine.h"
 
-
-//default constructor
 Engine::Engine()
 {
-	//initialises SDL
+	//Initialises SDL
 	SDL_Init(SDL_INIT_EVERYTHING);
 
-	//sets window dimensions
+	//Sets window dimensions
 	windowWidth = 964;
 	windowHeight = 900;
 
-	//creates window and centers it
+	//Creates window and centers it
 	window = SDL_CreateWindow("Tapper", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, SDL_WINDOW_SHOWN);
 	if (window == nullptr)
 	{
 		std::cout << "Window creation FAILED " << SDL_GetError() << std::endl;
 	}
 
-	//creates window and sets it to the size of the window
+	//Creates renderer and sets it to the size of the window
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	if (renderer == nullptr)
 	{
@@ -26,26 +24,26 @@ Engine::Engine()
 	}
 	SDL_RenderSetLogicalSize(renderer, windowWidth, windowHeight);
 
+	//Initialises TTF
 	if (TTF_Init() < 0)
 	{
 		std::cout << "TTF creation FAILED " << TTF_GetError() << std::endl;
 	}
-
+	
+	//Creates an instance of the controller
 	controller = new EventController();
 }
 
-//Engine::~Engine()
-//{
-//}
-
 void Engine::AddLayerElement(std::shared_ptr<GameObject> _input, int _layer)
 {
+	//Creates an instance of the LayeredGameObject struct and assigns it to the layerElements vector
 	LayeredGameObject layeredElement(_input, _layer);
 	layerElements.push_back(layeredElement);
+	//Sorts the layer before returning
 	SortLayers();
-	return;
 }
 
+//Sorting algorithm for std::sort - returns true if the lhs' layer is smaller than the rhs' layer
 bool Engine::CompareLayers(const LayeredGameObject &lhs, const LayeredGameObject &rhs)
 {
 	if (lhs.layer == rhs.layer)
@@ -58,6 +56,7 @@ bool Engine::CompareLayers(const LayeredGameObject &lhs, const LayeredGameObject
 	}
 }
 
+//Predicate for std::remove - returns true if the shared pointer is unique or if the GameObject's destroy variable is true
 bool Engine::LayerPredicate(const LayeredGameObject& _input)
 {
 	if (_input.gameObject.unique())
@@ -76,77 +75,44 @@ bool Engine::LayerPredicate(const LayeredGameObject& _input)
 
 void Engine::SortLayers()
 {
+	//Sorts the layers in ascending order
 	std::sort(layerElements.begin(), layerElements.end(), CompareLayers);
-	return;
 }
 
-//clears the renderer
+//Clears the window
 void Engine::Reset()
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 
-	//vec.erase(std::remove_if(vec.begin(), vec.end(), predicate), vec.end());
 	layerElements.erase(std::remove_if(layerElements.begin(), layerElements.end(), LayerPredicate), layerElements.end());
-
-	return;
 }
 
 void Engine::Update()
 {
+	//If the exit button has been clicked, exit the program
 	if (controller->GetQuitState() == true)
 	{
 		SetLoopState(false);
 		return;
 	}
 
-
+	//If the layerElements vector is about to relocate, reserve it additional memory
 	if (layerElements.size() >= layerElements.capacity())
 	{
 		layerElements.reserve(layerElements.size() + 3);
 	}
 
-	//Update for loop
+	//Calls the Update() and Draw() function for each element in the layerElements vector
 	for (LayeredGameObject obj : layerElements)
 	{
 		obj.gameObject->Update();
 		obj.gameObject->Draw();
 	}
-
-	return;
 }
 
-//draws the renderer to the window
+//Draws to the window
 void Engine::Present()
 {
 	SDL_RenderPresent(renderer);
-	return;
-}
-
-bool Engine::GetLoopState()
-{
-	return gameLoop;
-}
-
-void Engine::SetLoopState(bool _state)
-{
-	gameLoop = _state;
-	return;
-}
-
-//returns renderer
-SDL_Renderer* Engine::GetRenderer()
-{
-	//std::cout << renderer;
-	return renderer;
-}
-
-EventController* Engine::GetController()
-{
-	return controller;
-}
-
-void Engine::ControllerPollEvents()
-{
-	controller->PollEvents();
 }

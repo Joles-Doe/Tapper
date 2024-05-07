@@ -6,6 +6,7 @@ void EventController::ResetVariables()
 	mouseDown = false;
 }
 
+//Polls the event queue, and sets specific variables to true or false dependent on the event
 void EventController::PollEvents()
 {
 	ResetVariables();
@@ -18,6 +19,7 @@ void EventController::PollEvents()
 			programQuit = true;
 			break;
 		//Keyboard
+			//Keydown
 		case SDL_KEYDOWN:
 			keyDown = true;
 			switch (currentEvent.key.keysym.sym)
@@ -51,6 +53,7 @@ void EventController::PollEvents()
 				break;
 			}
 			break;
+			//Keyup
 		case SDL_KEYUP:
 			switch (currentEvent.key.keysym.sym)
 			{
@@ -84,6 +87,7 @@ void EventController::PollEvents()
 			}
 			break;
 		//Mouse
+			//Mousedown
 		case SDL_MOUSEBUTTONDOWN:
 			mouseDown = true;
 			switch (currentEvent.button.button)
@@ -96,6 +100,7 @@ void EventController::PollEvents()
 				break;
 			}
 			break;
+			//Mouseup
 		case SDL_MOUSEBUTTONUP:
 			switch (currentEvent.button.button)
 			{
@@ -110,11 +115,6 @@ void EventController::PollEvents()
 		}
 
 	}
-}
-
-bool EventController::GetQuitState()
-{
-	return programQuit;
 }
 
 bool EventController::GetKeyDown(const std::string& _key)
@@ -159,11 +159,6 @@ bool EventController::GetKeyDown(const std::string& _key)
 	return isDown;
 }
 
-bool EventController::GetKeyDown()
-{
-	return keyDown;
-}
-
 bool EventController::GetMouseDown(const std::string& _button)
 {
 	bool isDown{ false };
@@ -176,9 +171,4 @@ bool EventController::GetMouseDown(const std::string& _button)
 		isDown = mouse2Down;
 	}
 	return isDown;
-}
-
-bool EventController::GetMouseDown()
-{
-	return mouseDown;
 }

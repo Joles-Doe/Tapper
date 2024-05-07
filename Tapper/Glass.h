@@ -4,7 +4,9 @@
 class Glass : public GameObject
 {
 private:
+	//Predefined counter positions
 	int counterPositions[3]{ 262, 505, 750 };
+	//Direction variable - gets given a positive or negative value dependent on the direction it's travelling
 	int direction{ 0 };
 	bool moveLeft{ false };
 	bool glassReachedEnd{ false };
@@ -22,8 +24,9 @@ public:
 			direction = 2;
 		}
 	}
-
+	//Returns the moveLeft variable
 	bool GetMoveLeft() { return moveLeft; }
+	//Returns the reachedEnd variable
 	bool GetGlassEnd() { return glassReachedEnd; }
 
 	void Update();

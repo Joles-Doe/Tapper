@@ -7,11 +7,6 @@ GameObject::GameObject(SDL_Renderer* _rend)
 
 void GameObject::LoadImage(const std::string &_input)
 {
-	//Checks if a texutre for the object already exists, and purges it if so
-	if (imageTexture != nullptr)
-	{
-		SDL_DestroyTexture(imageTexture);
-	}
 	//Creates a surface from the image path
 	SDL_Surface* imageSurface = SDL_LoadBMP(_input.c_str());
 	//If the surface returns null, return an error
@@ -21,6 +16,11 @@ void GameObject::LoadImage(const std::string &_input)
 	}
 	else
 	{
+		//Checks if a texture for the object already exists, and purges it if so
+		if (imageTexture != nullptr)
+		{
+			SDL_DestroyTexture(imageTexture);
+		}
 		//Create a texture from the surface
 		imageTexture = SDL_CreateTextureFromSurface(renderer, imageSurface);
 		//Free the surface from memory
@@ -54,21 +54,6 @@ void GameObject::SetRectScale(int _w, int _h)
 	{
 		dstRect.h = _h;
 	}
-}
-
-int GameObject::GetRectX()
-{
-	return dstRect.x;
-}
-
-int GameObject::GetRectY()
-{
-	return dstRect.y;
-}
-
-bool GameObject::GetDestroy()
-{
-	return destroy;
 }
 
 void GameObject::Draw()

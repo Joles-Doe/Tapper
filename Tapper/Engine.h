@@ -8,6 +8,7 @@
 #include <vector>
 #include <algorithm>
 
+//Custom struct containing an instance of the GameObject class and it's layer
 struct LayeredGameObject
 {
 	LayeredGameObject(std::shared_ptr<GameObject> _input, int _layer)
@@ -22,14 +23,18 @@ struct LayeredGameObject
 class Engine
 {
 private:
+	//Window and Renderer pointers
 	SDL_Window* window{ nullptr };
 	SDL_Renderer* renderer{ nullptr };
 
+	//Variables containing the dimensions of the window
 	int windowWidth{ 0 };
 	int windowHeight{ 0 };
 
+	//Controller pointer
 	EventController* controller{ nullptr };
 
+	//Vector containing layerElements
 	std::vector<LayeredGameObject> layerElements;
 	int vecSize{ 0 };
 
@@ -38,18 +43,18 @@ private:
 	//Custom predicate for std::remove_if
 	static bool LayerPredicate(const LayeredGameObject& _input);
 
+	//GameLoop variable - program will exit if this is set to false
 	bool gameLoop{ false };
 public:
 	Engine();
-	//~Engine();
 
 	//Returns the renderer
-	SDL_Renderer* GetRenderer();
+	SDL_Renderer* GetRenderer() { return renderer; }
 	
 	//Returns the controller
-	EventController* GetController();
+	EventController* GetController() { return controller; }
 	//Calls poll event in controller
-	void ControllerPollEvents();
+	void ControllerPollEvents() { controller->PollEvents(); }
 	
 	//Adds an element to the engine
 	void AddLayerElement(std::shared_ptr<GameObject> _input, int _layer);
@@ -63,9 +68,9 @@ public:
 	void Present();
 
 	//Gets current game state
-	bool GetLoopState();
+	bool GetLoopState() { return gameLoop; }
 	//Sets current game state
-	void SetLoopState(bool _state);
+	void SetLoopState(bool _state) { gameLoop = _state; }
 
 	//Returns the width of the window
 	int GetWindowWidth() { return windowWidth; }

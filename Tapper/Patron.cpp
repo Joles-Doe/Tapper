@@ -5,10 +5,11 @@ void Patron::Update()
 	//If statement to determine whether to move left or right
 	if (canLeave == false)
 	{
-		//If true, pause for a second
+		//If true, start the idle animation and pause for a second
 		if (idle == true)
 		{
 			animation_ChangeToIdle = true;
+			//Once the second has passed, continue moving
 			if (SDL_GetTicks() > idleTimer + 1000)
 			{
 				idle = false;
@@ -42,6 +43,7 @@ void Patron::Update()
 					}
 				}
 			}
+			//Move the patron and change their animation
 			animation_ChangeToMove = true;
 			dstRect.x += 1;
 		}
@@ -52,6 +54,7 @@ void Patron::Update()
 		if (drink == true)
 		{
 			animation_ChangeToDrink = true;
+			//Once two seconds have passed
 			if (SDL_GetTicks() > drinkTimer + 2000)
 			{
 				drink = false;
@@ -91,15 +94,18 @@ void Patron::Update()
 					}
 				}
 			}
+			//Move the patron off screen and change their animation
 			animation_ChangeToReturn = true;
 			dstRect.x -= 3;
 		}
 	}
 
+	//Despawns the patron once they've moved far enough away
 	if (dstRect.x < -200 && canLeave == true)
 	{
 		destroy = true;
 	}
+	//Else, check if the patron has reached the other end of the bar
 	else if (dstRect.x > 776)
 	{
 		reachedEnd = true;
@@ -110,11 +116,6 @@ void Patron::Draw()
 {
 	SpriteUpdate();
 	SDL_RenderCopy(renderer, imageTexture, &srcRect, &dstRect);
-}
-
-Uint64 Patron::TimerStart()
-{
-	return SDL_GetTicks();
 }
 
 bool Patron::CheckIdle()
@@ -136,12 +137,13 @@ void Patron::SpriteUpdate()
 	idle = 40 x 56 (distance between sprites - 64 * iterator)
 	walking = 44 x 56 (distance between sprites - 64 * iterator)
 	drinking = 52 x 56 (single sprite)
-	leaving = 64 x 56 (single sprite)*/
+	leaving = 64 x 56 (single sprite)
+	*/
 
 	if (animation_ChangeToIdle == true)
 	{
-		//check if animation is the same
-		if (animationColumn != 0)
+		//If the animation is the same, don't reset variables
+		if (animationRow != 0)
 		{
 			animationSingleSprite = false;
 			animation_ChangeToIdle = false;
@@ -149,7 +151,7 @@ void Patron::SpriteUpdate()
 			dstRect.w = 44 * 2;
 			srcRect.h = 56;
 			dstRect.h = 56 * 2;
-			animationColumn = 0;
+			animationRow = 0;
 			animationStep = 0;
 			animationMaxSteps = 3;
 			animationTimer = SDL_GetTicks();
@@ -158,7 +160,8 @@ void Patron::SpriteUpdate()
 	}
 	if (animation_ChangeToMove == true)
 	{
-		if (animationColumn != 1)
+		//If the animation is the same, don't reset variables
+		if (animationRow != 1)
 		{
 			animationSingleSprite = false;
 			animation_ChangeToMove = false;
@@ -166,7 +169,7 @@ void Patron::SpriteUpdate()
 			dstRect.w = 44 * 2;
 			srcRect.h = 56;
 			dstRect.h = 56 * 2;
-			animationColumn = 1;
+			animationRow = 1;
 			animationStep = 0;
 			animationMaxSteps = 3;
 			animationTimer = SDL_GetTicks();
@@ -175,7 +178,8 @@ void Patron::SpriteUpdate()
 	}
 	if (animation_ChangeToDrink == true)
 	{
-		if (animationColumn != 2)
+		//If the animation is the same, don't reset variables
+		if (animationRow != 2)
 		{
 			animationSingleSprite = true;
 			animation_ChangeToDrink = false;
@@ -183,13 +187,14 @@ void Patron::SpriteUpdate()
 			dstRect.w = 52 * 2;
 			srcRect.h = 56;
 			dstRect.h = 56 * 2;
-			animationColumn = 2;
+			animationRow = 2;
 			animationStep = 0;
 		}
 	}
 	if (animation_ChangeToReturn == true)
 	{
-		if (animationColumn != 3)
+		//If the animation is the same, don't reset variables
+		if (animationRow != 3)
 		{
 			animationSingleSprite = true;
 			animation_ChangeToReturn = false;
@@ -197,28 +202,34 @@ void Patron::SpriteUpdate()
 			dstRect.w = 64 * 2;
 			srcRect.h = 56;
 			dstRect.h = 56 * 2;
-			animationColumn = 3;
+			animationRow = 3;
 			animationStep = 0;
 		}
 	}
 
+	//Check if the sprite should animate
 	if (animationSingleSprite == false)
 	{
+		//Once the sprite has exceeded the delay threshold
 		if (SDL_GetTicks() > animationTimer + animationDelay)
 		{
+			//Move to the next frame in the animation
 			animationStep++;
-			if (animationStep >= animationMaxSteps)
+			//If the step has reached the max steps, loop the animation
+			if (animationStep > animationMaxSteps)
 			{
 				animationStep = 0;
 			}
+			//Reset timer and set the src rect dimensions
 			animationTimer = SDL_GetTicks();
 			srcRect.x = 64 * animationStep;
-			srcRect.y = 64 * animationColumn;
+			srcRect.y = 64 * animationRow;
 		}
 	}
 	else
 	{
+		//Set src rect dimensions
 		srcRect.x = 0;
-		srcRect.y = 64 * animationColumn;
+		srcRect.y = 64 * animationRow;
 	}
 }

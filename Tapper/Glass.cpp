@@ -2,8 +2,10 @@
 
 void Glass::Update()
 {
+	//Move in the defined direction
 	dstRect.x += direction;
 
+	//If the glass has reached either end of the counter
 	if (dstRect.x <= 0)
 	{
 		glassReachedEnd = true;

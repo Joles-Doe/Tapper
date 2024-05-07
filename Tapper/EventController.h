@@ -1,10 +1,10 @@
 #pragma once
 #include <SDL.h>
 #include <string>
-#include <optional>
 class EventController
 {
 private:
+	//Holds the event during the poll sequence
 	SDL_Event currentEvent;
 
 	//Resets all event variables
@@ -34,17 +34,16 @@ private:
 public:
 	//Polls all events
 	void PollEvents();
-	//Returns true or false if quit event has been raised
-	bool GetQuitState();
-	//Sets the quitState variable
+	//Getters and Setters for the programQuit variable	
+	bool GetQuitState() { return programQuit; }
 	void SetQuitState(bool _input) { programQuit = _input; }
 	//Returns true or false if specific key has been pressed
 	bool GetKeyDown(const std::string& _key);
 	//Returns true or false if any key has been pressed
-	bool GetKeyDown();
+	bool GetKeyDown() { return keyDown; }
 	//Returns true or false if specific mouse button has been pressed
 	bool GetMouseDown(const std::string& _button);
 	//Returns true or false if any mouse button has been pressed
-	bool GetMouseDown();
+	bool GetMouseDown() { return mouseDown; }
 };
 
