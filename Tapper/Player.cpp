@@ -1,5 +1,10 @@
 #include "Player.h"
 
+Player::~Player()
+{
+	controller = nullptr;
+}
+
 void Player::Update()
 {
 	//Change to idle animation

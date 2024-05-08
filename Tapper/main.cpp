@@ -10,7 +10,9 @@
 #include <string>
 
 bool Menu(Engine& sdlEngine, const float frameDelay);
-void Game(Engine& sdlEngine, const float frameDelay);
+int Game(Engine& sdlEngine, const float frameDelay);
+void GameOver(Engine& sdlEngine, const float frameDelay, int _round);
+
 Uint64 TimerStart();
 
 int main(int argc, char* argv[])
@@ -26,6 +28,7 @@ int main(int argc, char* argv[])
 	Engine sdlEngine = Engine();
 
 	bool menuReturn{ false };
+	int rounds{ 0 };
 	while (true)
 	{
 		//Call the menu function
@@ -39,7 +42,9 @@ int main(int argc, char* argv[])
 		else
 		{
 			//Begin the game
-			Game(sdlEngine, frameDelay);
+			rounds = Game(sdlEngine, frameDelay);
+			//Once the game has finished, show the game over screen
+			GameOver(sdlEngine, frameDelay, rounds);
 		}
 	}
 
@@ -61,6 +66,7 @@ bool Menu(Engine& sdlEngine, const float frameDelay)
 	titleText->ChangeText("TAPPER");
 	titleText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (titleText->GetRect().w / 2), 50);
 	sdlEngine.AddLayerElement(titleText, 0);
+
 	//Start button
 	std::shared_ptr<Text> startText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 100);
 	startText->ChangeColor(255, 255, 255);
@@ -68,14 +74,22 @@ bool Menu(Engine& sdlEngine, const float frameDelay)
 	startText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (startText->GetRect().w / 2), sdlEngine.GetWindowHeight() / 2);
 	sdlEngine.AddLayerElement(startText, 0);
 
+	//Exit button
+	std::shared_ptr<Text> exitText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 80);
+	exitText->ChangeColor(255, 255, 255);
+	exitText->ChangeText("EXIT");
+	exitText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (exitText->GetRect().w / 2), (sdlEngine.GetWindowHeight() / 2 - exitText->GetRect().h / 2) + startText->GetRect().h + 80);
+	sdlEngine.AddLayerElement(exitText, 0);
+
 	//Variables related to frame delay
 	Uint64 frameStart{ 0 };
 	Uint64 frameEnd{ 0 };
 
-	bool startButtonClicked{ false };
+	bool exitButtonClicked{ false };
 
 	//Rect instances created to record the position of the mouse and the start button
 	SDL_Rect startTextRect = startText->GetRect();
+	SDL_Rect exitTextRect = exitText->GetRect();
 	SDL_Rect mouseRect{ 0 };
 	mouseRect.w = 1;
 	mouseRect.h = 1;
@@ -95,9 +109,14 @@ bool Menu(Engine& sdlEngine, const float frameDelay)
 			//Set the mouse rect position to the mouse
 			SDL_GetMouseState(&mouseRect.x, &mouseRect.y);
 			//Check if the mouse clicked on the start button
-			startButtonClicked = SDL_HasIntersection(&startTextRect, &mouseRect);
-			if (startButtonClicked == true)
+			if (SDL_HasIntersection(&startTextRect, &mouseRect))
 			{
+				sdlEngine.SetLoopState(false);
+			}
+			//Check if the mouse clicked on the exit button
+			if (SDL_HasIntersection(&exitTextRect, &mouseRect))
+			{
+				exitButtonClicked = true;
 				sdlEngine.SetLoopState(false);
 			}
 		}
@@ -115,12 +134,13 @@ bool Menu(Engine& sdlEngine, const float frameDelay)
 	//Once the menu loop ends, remove everything from the heap
 	titleText.reset();
 	startText.reset();
+	exitText.reset();
 	sdlEngine.Reset();
 
-	return false;
+	return exitButtonClicked;
 }
 
-void Game(Engine& sdlEngine, const float frameDelay)
+int Game(Engine& sdlEngine, const float frameDelay)
 {
 	//Music
 	sdlEngine.Music_PlayGame();
@@ -213,7 +233,7 @@ void Game(Engine& sdlEngine, const float frameDelay)
 			if (showText == true)
 			{
 				showText = false;
-				roundText->ChangeText("Round " + std::to_string(++round));
+				roundText->ChangeText("Round " + std::to_string(round + 1));
 				roundText->SetRectPos(sdlEngine.GetWindowWidth() / 2 - roundText->GetRect().w / 2, sdlEngine.GetWindowHeight() / 2 - roundText->GetRect().h);
 				roundText_2->SetRectPos(sdlEngine.GetWindowWidth() / 2 - roundText_2->GetRect().w / 2, (sdlEngine.GetWindowHeight() / 2 - roundText_2->GetRect().h) + roundText->GetRect().h);
 				roundText->SetVisible(true);
@@ -407,6 +427,87 @@ void Game(Engine& sdlEngine, const float frameDelay)
 	projectileHandler.reset();
 	enemyHandler.reset();
 	livesText.reset();
+	roundText.reset();
+	roundText_2.reset();
+	sdlEngine.Reset();
+
+	return (round + 1);
+}
+
+void GameOver(Engine& sdlEngine, const float frameDelay, int _round)
+{
+	//Music
+	sdlEngine.Music_PlayGameOver();
+
+	//Text elements
+	//Title
+	std::shared_ptr<Text> titleText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 200);
+	titleText->ChangeColor(255, 255, 255);
+	titleText->ChangeText("GAME OVER!");
+	titleText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (titleText->GetRect().w / 2), 50);
+	sdlEngine.AddLayerElement(titleText, 0);
+
+	//Round text
+	std::shared_ptr<Text> roundText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 100);
+	roundText->ChangeColor(255, 255, 255);
+	roundText->ChangeText("You got to Round " + std::to_string(_round));
+	roundText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (roundText->GetRect().w / 2), sdlEngine.GetWindowHeight() / 2 - 100);
+	sdlEngine.AddLayerElement(roundText, 0);
+
+	//Return button
+	std::shared_ptr<Text> returnText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 80);
+	returnText->ChangeColor(255, 255, 255);
+	returnText->ChangeText("RETURN");
+	returnText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (returnText->GetRect().w / 2), (sdlEngine.GetWindowHeight() / 2 - returnText->GetRect().h / 2) + roundText->GetRect().h + 200);
+	sdlEngine.AddLayerElement(returnText, 0);
+
+	//Variables related to frame delay
+	Uint64 frameStart{ 0 };
+	Uint64 frameEnd{ 0 };
+
+	bool exitButtonClicked{ false };
+
+	//Rect instances created to record the position of the mouse and the start button
+	SDL_Rect returnTextRect = returnText->GetRect();
+	SDL_Rect mouseRect{ 0 };
+	mouseRect.w = 1;
+	mouseRect.h = 1;
+
+	sdlEngine.SetLoopState(true);
+	while (sdlEngine.GetLoopState())
+	{
+		frameStart = SDL_GetTicks();
+
+		sdlEngine.Reset();
+		sdlEngine.ControllerPollEvents();
+		sdlEngine.Update();
+
+		//If the user either left or right clicks
+		if (sdlEngine.GetController()->GetMouseDown("l") == true || sdlEngine.GetController()->GetMouseDown("r") == true)
+		{
+			//Set the mouse rect position to the mouse
+			SDL_GetMouseState(&mouseRect.x, &mouseRect.y);
+			//Check if the mouse clicked on the return button
+			if (SDL_HasIntersection(&returnTextRect, &mouseRect))
+			{
+				sdlEngine.SetLoopState(false);
+			}
+		}
+
+		sdlEngine.Present();
+
+		//Delay the program to keep 60 FPS
+		frameEnd = SDL_GetTicks();
+		if (frameDelay > frameEnd - frameStart)
+		{
+			SDL_Delay(frameDelay - (frameEnd - frameStart));
+		}
+	}
+
+	//Once the menu loop ends, remove everything from the heap
+	titleText.reset();
+	roundText.reset();
+	returnText.reset();
 	sdlEngine.Reset();
 }
 

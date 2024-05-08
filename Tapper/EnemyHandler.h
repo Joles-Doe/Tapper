@@ -25,6 +25,7 @@ private:
 	static bool EnemyPredicate(const Enemy& _input);
 public:
 	EnemyHandler(SDL_Renderer* _rend, Engine* _engine) : GameObject(_rend) { engine = _engine; }
+	~EnemyHandler();
 
 	//Adds an enemy to the vector and engine
 	void AddEnemy(int _y, int _layer);

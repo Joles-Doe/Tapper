@@ -5,6 +5,12 @@ GameObject::GameObject(SDL_Renderer* _rend)
 	renderer = _rend;
 }
 
+GameObject::~GameObject()
+{
+	renderer = nullptr;
+	SDL_DestroyTexture(imageTexture);
+}
+
 void GameObject::LoadImage(const std::string &_input)
 {
 	//Creates a surface from the image path

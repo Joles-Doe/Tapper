@@ -17,6 +17,7 @@ protected:
 	bool visible{ true };
 public:
 	GameObject(SDL_Renderer* _rend);
+	~GameObject();
 
 	//Loads a bitmap image
 	void LoadImage(const std::string& _input);

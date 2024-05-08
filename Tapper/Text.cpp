@@ -1,5 +1,10 @@
 #include "Text.h"
 
+Text::~Text()
+{
+	TTF_CloseFont(font);
+}
+
 void Text::ChangeColor(int _r, int _g, int _b)
 {
 	if (_r != -1)

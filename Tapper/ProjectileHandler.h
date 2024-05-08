@@ -25,6 +25,7 @@ private:
 	static bool ProjectilePredicate(const Projectile& _input);
 public:
 	ProjectileHandler(SDL_Renderer* _rend, Engine* _engine) : GameObject(_rend) { engine = _engine; }
+	~ProjectileHandler();
 
 	//Adds a projectile to the vector and adds it to the engine
 	void AddProjectile(int _X, int _Y, std::string _direction, int _layer, bool _isFull);

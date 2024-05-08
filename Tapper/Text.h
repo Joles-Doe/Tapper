@@ -13,6 +13,7 @@ public:
 	Text(SDL_Renderer* _rend, const std::string& _fontPath, int _fontSize) : GameObject(_rend) {
 		font = TTF_OpenFont(_fontPath.c_str(), _fontSize);
 	};
+	~Text();
 	//Changes color of text. Use value -1 to keep previous value
 	void ChangeColor(int _r, int _g, int _b);
 	//Changes the text

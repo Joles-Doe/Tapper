@@ -17,6 +17,11 @@ bool EnemyHandler::EnemyPredicate(const Enemy& _input)
 	}
 }
 
+EnemyHandler::~EnemyHandler()
+{
+	engine = nullptr;
+}
+
 void EnemyHandler::AddEnemy(int _y, int _layer)
 {
 	//Creates a new shared pointer and gives it a random spritesheet

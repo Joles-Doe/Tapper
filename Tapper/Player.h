@@ -53,6 +53,7 @@ public:
 		SetRectPos(counterEndPos, 200);
 		controller = _controller;
 	};
+	~Player();
 
 	void Update();
 	void Draw();

@@ -1,13 +1,15 @@
 ﻿  EnemyHandler.cpp
-D:\s5623772\Tapper\Tapper\EnemyHandler.h(32): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  Engine.cpp
+D:\s5623772\Tapper\Tapper\EnemyHandler.h(33): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Player.cpp
   ProjectileHandler.cpp
-D:\s5623772\Tapper\Tapper\ProjectileHandler.h(33): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+D:\s5623772\Tapper\Tapper\ProjectileHandler.h(34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Text.cpp
   main.cpp
-D:\s5623772\Tapper\Tapper\ProjectileHandler.h(33): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-D:\s5623772\Tapper\Tapper\EnemyHandler.h(32): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-D:\s5623772\Tapper\Tapper\main.cpp(19,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\s5623772\Tapper\Tapper\main.cpp(108,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-D:\s5623772\Tapper\Tapper\main.cpp(394,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+D:\s5623772\Tapper\Tapper\ProjectileHandler.h(34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+D:\s5623772\Tapper\Tapper\EnemyHandler.h(33): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+D:\s5623772\Tapper\Tapper\main.cpp(21,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\s5623772\Tapper\Tapper\main.cpp(130,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+D:\s5623772\Tapper\Tapper\main.cpp(417,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+D:\s5623772\Tapper\Tapper\main.cpp(501,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
   Generating Code...
   Tapper.vcxproj -> D:\s5623772\Tapper\x64\Debug\Tapper.exe

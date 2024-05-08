@@ -17,6 +17,11 @@ bool ProjectileHandler::ProjectilePredicate(const Projectile& _input)
 	}
 }
 
+ProjectileHandler::~ProjectileHandler()
+{
+	engine = nullptr;
+}
+
 void ProjectileHandler::AddProjectile(int _x, int _y, std::string _direction, int _layer, bool _isFull)
 {
 	//Creates a new shared pointer and gives it a sprite
