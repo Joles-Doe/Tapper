@@ -34,6 +34,15 @@ private:
 	//Controller pointer
 	EventController* controller{ nullptr };
 
+	//Music pointers
+	Mix_Music* menuMusic{ nullptr };
+	Mix_Music* gameMusic{ nullptr };
+	Mix_Music* gameOverMusic{ nullptr };
+	//Variables containing music information
+	bool menu_IsPlaying{ false };
+	bool game_IsPlaying{ false };
+	bool gameOver_IsPlaying{ false };
+
 	//Vector containing layerElements
 	std::vector<LayeredGameObject> layerElements;
 	int vecSize{ 0 };
@@ -67,10 +76,18 @@ public:
 	//Draws the renderer to the window
 	void Present();
 
-	//Gets current game state
+	//Getters and Setters for the loop state variable
 	bool GetLoopState() { return gameLoop; }
-	//Sets current game state
 	void SetLoopState(bool _state) { gameLoop = _state; }
+
+	//Plays the background music, if not already playing
+	void Music_PlayMenu();
+
+	//Plays the background music, if not already playing
+	void Music_PlayGame();
+
+	//Plays the game over music, if not already playing
+	void Music_PlayGameOver();
 
 	//Returns the width of the window
 	int GetWindowWidth() { return windowWidth; }

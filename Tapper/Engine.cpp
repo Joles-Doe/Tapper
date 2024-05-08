@@ -29,6 +29,18 @@ Engine::Engine()
 	{
 		std::cout << "TTF creation FAILED " << TTF_GetError() << std::endl;
 	}
+
+	//Initialises Mixer
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) != 0)
+	{
+		std::cout << "Mixer creation FAILED " << Mix_GetError() << std::endl;
+	}
+	else
+	{
+		menuMusic = Mix_LoadMUS("Menu.mp3");
+		gameMusic = Mix_LoadMUS("Game.mp3");
+		gameOverMusic = Mix_LoadMUS("Game Over.mp3");
+	}
 	
 	//Creates an instance of the controller
 	controller = new EventController();
@@ -115,4 +127,37 @@ void Engine::Update()
 void Engine::Present()
 {
 	SDL_RenderPresent(renderer);
+}
+
+void Engine::Music_PlayMenu()
+{
+	if (menu_IsPlaying == false)
+	{
+		Mix_PlayMusic(menuMusic, -1);
+		menu_IsPlaying = true;
+		game_IsPlaying = false;
+		gameOver_IsPlaying = false;
+	}
+}
+
+void Engine::Music_PlayGame()
+{
+	if (game_IsPlaying == false)
+	{
+		Mix_PlayMusic(gameMusic, -1);
+		menu_IsPlaying = false;
+		game_IsPlaying = true;
+		gameOver_IsPlaying = false;
+	}
+}
+
+void Engine::Music_PlayGameOver()
+{
+	if (gameOver_IsPlaying == false)
+	{
+		Mix_PlayMusic(gameOverMusic, -1);
+		menu_IsPlaying = false;
+		game_IsPlaying = false;
+		gameOver_IsPlaying = true;
+	}
 }

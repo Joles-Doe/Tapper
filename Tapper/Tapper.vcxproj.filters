@@ -134,4 +134,9 @@
   <ItemGroup>
     <Font Include="munro.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Menu.mp3" />
+    <Media Include="Game Over.mp3" />
+    <Media Include="Game.mp3" />
+  </ItemGroup>
 </Project>

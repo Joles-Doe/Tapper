@@ -193,6 +193,11 @@
   <ItemGroup>
     <Font Include="munro.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Game Over.mp3" />
+    <Media Include="Game.mp3" />
+    <Media Include="Menu.mp3" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

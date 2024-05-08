@@ -43,11 +43,17 @@ int main(int argc, char* argv[])
 		}
 	}
 
+	Mix_Quit();
+	TTF_Quit();
+	SDL_Quit();
 	return 0;
 }
 
 bool Menu(Engine& sdlEngine, const float frameDelay)
 {
+	//Music
+	sdlEngine.Music_PlayMenu();
+
 	//Text elements
 	//Title
 	std::shared_ptr<Text> titleText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 200);
@@ -116,6 +122,9 @@ bool Menu(Engine& sdlEngine, const float frameDelay)
 
 void Game(Engine& sdlEngine, const float frameDelay)
 {
+	//Music
+	sdlEngine.Music_PlayGame();
+
 	//Background elements
 	//Floor
 	std::shared_ptr<Background> floor = std::make_shared<Background>(sdlEngine.GetRenderer());
