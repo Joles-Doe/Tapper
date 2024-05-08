@@ -76,7 +76,7 @@ void Patron::Update()
 				//Check if patron is still on screen
 				if (dstRect.x > 0)
 				{
-					//Once the timer reaches two seconds
+					//Once the timer reaches 1.2 seconds
 					if (SDL_GetTicks() > drinkTimer + 1200)
 					{
 						//Check if patron should start drinking
