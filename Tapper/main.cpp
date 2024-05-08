@@ -229,6 +229,19 @@ int Game(Engine& sdlEngine, const float frameDelay)
 		//If a new round should be started
 		if (startNewRound == true)
 		{
+			//If the player succeeded the previous round, increase the round counter (will only run once until the start of the next round)
+			if (addRound == true)
+			{
+				addRound = false;
+				round += 1;
+			}
+			//If a life has been lost, reduce the life counter and change the life text (will only run once until the start of the next round)
+			if (lostLife == true)
+			{
+				lostLife = false;
+				livesText->ChangeText("Lives: " + std::to_string(lives));
+				livesText->SetRectPos(30, 30);
+			}
 			//Make the round text visible, and clear the enemy and projectile vectors (will only run once until the start of the next round)
 			if (showText == true)
 			{
@@ -240,19 +253,6 @@ int Game(Engine& sdlEngine, const float frameDelay)
 				roundText_2->SetVisible(true);
 				projectileHandler->ClearVector();
 				enemyHandler->ClearVector();
-			}
-			//If a life has been lost, reduce the life counter and change the life text (will only run once until the start of the next round)
-			if (lostLife == true)
-			{
-				lostLife = false;
-				livesText->ChangeText("Lives: " + std::to_string(lives));
-				livesText->SetRectPos(30, 30);
-			}
-			//If the player succeeded the previous round, increase the round counter (will only run once until the start of the next round)
-			if (addRound == true)
-			{
-				addRound = false;
-				round++;
 			}
 			//After a second, check if the player presses a key
 			if (sdlEngine.GetController()->GetKeyDown() && SDL_GetTicks() >= roundTimer + 1000)

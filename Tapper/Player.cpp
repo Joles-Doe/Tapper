@@ -65,7 +65,7 @@ void Player::Update()
 					yIndex--;
 				}
 				//Begin the delay for upwards and downwards movement
-				yTicks = startTimerY();
+				yTicks = StartTimerY();
 				dstRect.y = yPositions[yIndex];
 				dstRect.x = counterEndPos;
 				//Stop the pouring timer
@@ -83,7 +83,7 @@ void Player::Update()
 					yIndex++;
 				}
 				//Begin the delay for upwards and downwards movement
-				yTicks = startTimerY();
+				yTicks = StartTimerY();
 				dstRect.y = yPositions[yIndex];
 				dstRect.x = counterEndPos;
 				//Stop the pouring timer
@@ -95,7 +95,7 @@ void Player::Update()
 			//Once half a second has passed, allow upwards and downwards movement
 			if (SDL_GetTicks() >= yTicks + 500)
 			{
-				endTimerY();
+				EndTimerY();
 			}
 		}
 
@@ -163,13 +163,13 @@ bool Player::CheckNewGlass()
 	}
 }
 
-Uint64 Player::startTimerY()
+Uint64 Player::StartTimerY()
 {
 	yTimer = true;
 	return SDL_GetTicks();
 }
 
-void Player::endTimerY()
+void Player::EndTimerY()
 {
 	yTimer = false;
 }

@@ -14,8 +14,8 @@ private:
 	//Variables related to delaying the player's up and down movement
 	bool yTimer{ false };
 	Uint64 yTicks{ 0 };
-	Uint64 startTimerY();
-	void endTimerY();
+	Uint64 StartTimerY();
+	void EndTimerY();
 
 	//Determines whether or not the player can do anything
 	bool canAct{ false };
@@ -30,13 +30,11 @@ private:
 	//Contains the x position of the end of the bar counters
 	int counterEndPos{ 776 };
 
-	//Variables related to creating glasses
-	std::shared_ptr<Glass> currentGlass{ 0 };
+	//Variable related to creating a new glass instance
 	bool newGlass{ false };
 
 	//Variables related to animation
 	void SpriteUpdate();
-	SDL_Rect srcRect{ 0 };
 	bool animation_ChangeToMove{ false };
 	bool animation_ChangeToDrink{ false };
 	bool animation_ChangeToIdle{ true };
@@ -55,15 +53,14 @@ public:
 	};
 	~Player();
 
-	void Update();
-	void Draw();
-
 	bool CheckNewGlass();
-	std::shared_ptr<Glass> GetGlass() { return currentGlass; }
 
 	//Getters and Setters for the canAct variable
 	int GetAct() { return canAct; }
 	void SetAct(bool _act) { canAct = _act; }
 	//Returns the Y Index
 	int GetYIndex() { return yIndex; }
+
+	void Update();
+	void Draw();
 };

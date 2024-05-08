@@ -31,7 +31,6 @@ private:
 	//Sprite variables
 	//Changes animation if specified
 	void SpriteUpdate();
-	SDL_Rect srcRect{ 0 };
 	bool animation_ChangeToMove{ true };
 	bool animation_ChangeToDrink{ false };
 	bool animation_ChangeToIdle{ false };
@@ -49,9 +48,6 @@ public:
 		yIndex = _indexY;
 	}
 
-	void Update();
-	void Draw();
-
 	//Getters and Setters for the canLeave variable
 	bool GetLeave() { return canLeave; }
 	void SetLeave(bool _input) { canLeave = _input; }
@@ -62,4 +58,7 @@ public:
 	bool GetReachedEnd() { return reachedEnd; }
 	//Returns the Y index
 	int GetYIndex() { return yIndex; }
+
+	void Update();
+	void Draw();
 };
