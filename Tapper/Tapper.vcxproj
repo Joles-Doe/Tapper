@@ -181,6 +181,7 @@
     <Image Include="Counters.bmp" />
     <Image Include="Floor.bmp" />
     <Image Include="GlassPlaceholder.bmp" />
+    <Image Include="Instructions.bmp" />
     <Image Include="Patron1.bmp" />
     <Image Include="Patron2.bmp" />
     <Image Include="Patron3.bmp" />

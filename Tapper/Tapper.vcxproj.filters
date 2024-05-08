@@ -130,6 +130,9 @@
     <Image Include="BeerEmpty.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Instructions.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="munro.ttf" />

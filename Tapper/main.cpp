@@ -40,6 +40,8 @@ int main(int argc, char* argv[])
 		}
 		else
 		{
+			//Show instructions
+			Instructions(sdlEngine, frameDelay);
 			//Begin the game
 			rounds = Game(sdlEngine, frameDelay);
 			//Once the game has finished, show the game over screen
@@ -141,6 +143,11 @@ bool Menu(Engine& sdlEngine, const float frameDelay)
 
 void Instructions(Engine& sdlEngine, const float frameDelay)
 {
+	//Instructions
+	std::shared_ptr<Background> instructions = std::make_shared<Background>(sdlEngine.GetRenderer());
+	instructions->LoadImage("Instructions.bmp");
+	sdlEngine.AddLayerElement(instructions, 0);
+
 	//Variables related to frame delay
 	Uint64 frameStart{ 0 };
 	Uint64 frameEnd{ 0 };
@@ -154,7 +161,7 @@ void Instructions(Engine& sdlEngine, const float frameDelay)
 		sdlEngine.ControllerPollEvents();
 		sdlEngine.Update();
 
-		if (sdlEngine.GetController()->GetKeyDown())
+		if (sdlEngine.GetController()->GetKeyDown("spacebar"))
 		{
 			sdlEngine.SetLoopState(false);
 		}
@@ -170,6 +177,7 @@ void Instructions(Engine& sdlEngine, const float frameDelay)
 	}
 
 	//Once the instruction loop ends, remove everything from the heap
+	instructions.reset();
 	sdlEngine.Reset();
 }
 
