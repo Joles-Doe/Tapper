@@ -10,10 +10,9 @@
 #include <string>
 
 bool Menu(Engine& sdlEngine, const float frameDelay);
+void Instructions(Engine& sdlEngine, const float frameDelay);
 int Game(Engine& sdlEngine, const float frameDelay);
 void GameOver(Engine& sdlEngine, const float frameDelay, int _round);
-
-Uint64 TimerStart();
 
 int main(int argc, char* argv[])
 {
@@ -138,6 +137,40 @@ bool Menu(Engine& sdlEngine, const float frameDelay)
 	sdlEngine.Reset();
 
 	return exitButtonClicked;
+}
+
+void Instructions(Engine& sdlEngine, const float frameDelay)
+{
+	//Variables related to frame delay
+	Uint64 frameStart{ 0 };
+	Uint64 frameEnd{ 0 };
+
+	sdlEngine.SetLoopState(true);
+	while (sdlEngine.GetLoopState())
+	{
+		frameStart = SDL_GetTicks();
+
+		sdlEngine.Reset();
+		sdlEngine.ControllerPollEvents();
+		sdlEngine.Update();
+
+		if (sdlEngine.GetController()->GetKeyDown())
+		{
+			sdlEngine.SetLoopState(false);
+		}
+
+		sdlEngine.Present();
+
+		//Delay the program to keep 60 FPS
+		frameEnd = SDL_GetTicks();
+		if (frameDelay > frameEnd - frameStart)
+		{
+			SDL_Delay(frameDelay - (frameEnd - frameStart));
+		}
+	}
+
+	//Once the instruction loop ends, remove everything from the heap
+	sdlEngine.Reset();
 }
 
 int Game(Engine& sdlEngine, const float frameDelay)
@@ -271,7 +304,7 @@ int Game(Engine& sdlEngine, const float frameDelay)
 				spawnNew = true;
 				enemyCount = 0;
 				maxEnemies = (3 * round) + 3;
-				roundTimer = TimerStart();
+				roundTimer = SDL_GetTicks();
 			}
 		}
 		else
@@ -298,7 +331,7 @@ int Game(Engine& sdlEngine, const float frameDelay)
 						spawnNew = false;
 						enemyCount++;
 						//Reset the timer and set a random spawn delay
-						roundTimer = TimerStart();
+						roundTimer = SDL_GetTicks();
 						spawnDelay = 1000 + rand() % 5000;
 						//Spawn an enemy
 						enemyHandler->AddEnemy(rand() % 3, 3);
@@ -317,7 +350,7 @@ int Game(Engine& sdlEngine, const float frameDelay)
 						//Start a new round, and reset the timer
 						startNewRound = true;
 						addRound = true;
-						roundTimer = TimerStart();
+						roundTimer = SDL_GetTicks();
 						//Stop the player from acting
 						player->SetAct(false);
 					}
@@ -332,7 +365,7 @@ int Game(Engine& sdlEngine, const float frameDelay)
 					startNewRound = true;
 					lostLife = true;
 					lives--;
-					roundTimer = TimerStart();
+					roundTimer = SDL_GetTicks();
 					//Stop the player from acting
 					player->SetAct(false);
 					break;
@@ -347,7 +380,7 @@ int Game(Engine& sdlEngine, const float frameDelay)
 					startNewRound = true;
 					lostLife = true;
 					lives--;
-					roundTimer = TimerStart();
+					roundTimer = SDL_GetTicks();
 					//Stop the player from acting
 					player->SetAct(false);
 					break;
@@ -504,14 +537,9 @@ void GameOver(Engine& sdlEngine, const float frameDelay, int _round)
 		}
 	}
 
-	//Once the menu loop ends, remove everything from the heap
+	//Once the loop ends, remove everything from the heap
 	titleText.reset();
 	roundText.reset();
 	returnText.reset();
 	sdlEngine.Reset();
-}
-
-Uint64 TimerStart()
-{
-	return SDL_GetTicks();
 }
