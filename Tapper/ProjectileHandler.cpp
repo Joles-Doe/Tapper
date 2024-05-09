@@ -29,11 +29,11 @@ void ProjectileHandler::AddProjectile(int _x, int _y, std::string _direction, in
 	//If the projectile needs to be full
 	if (_isFull == true)
 	{
-		newGlass->LoadImage("BeerFull.bmp");
+		newGlass->LoadImage("Data\\BeerFull.bmp");
 	}
 	else
 	{
-		newGlass->LoadImage("BeerEmpty.bmp");
+		newGlass->LoadImage("Data\\BeerEmpty.bmp");
 	}
 	newGlass->SetRectScale(50, 42);
 	//Assigns the shared pointer to projectile struct and adds it to the vector

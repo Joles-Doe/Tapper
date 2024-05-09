@@ -125,7 +125,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Tapper\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Tapper\SDL\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -171,33 +171,6 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="ProjectileHandler.h" />
     <ClInclude Include="Text.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Back Wall.bmp" />
-    <Image Include="Barman.bmp" />
-    <Image Include="BeerEmpty.bmp" />
-    <Image Include="BeerFull.bmp" />
-    <Image Include="Counter Single.bmp" />
-    <Image Include="Counters.bmp" />
-    <Image Include="Floor.bmp" />
-    <Image Include="GlassPlaceholder.bmp" />
-    <Image Include="Instructions.bmp" />
-    <Image Include="Patron1.bmp" />
-    <Image Include="Patron2.bmp" />
-    <Image Include="Patron3.bmp" />
-    <Image Include="Patron4.bmp" />
-    <Image Include="Patron5.bmp" />
-    <Image Include="PatronPlaceholder.bmp" />
-    <Image Include="PlayerPlaceholder.bmp" />
-    <Image Include="Side Wall.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="munro.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="Game Over.mp3" />
-    <Media Include="Game.mp3" />
-    <Media Include="Menu.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

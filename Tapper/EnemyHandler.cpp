@@ -26,7 +26,7 @@ void EnemyHandler::AddEnemy(int _y, int _layer)
 {
 	//Creates a new shared pointer and gives it a random spritesheet
 	std::shared_ptr<Patron> newPatron = std::make_shared<Patron>(renderer, _y);
-	newPatron->LoadImage("Patron" + std::to_string(1 + rand() % 5) + ".bmp");
+	newPatron->LoadImage("Data\\Patron" + std::to_string(1 + rand() % 5) + ".bmp");
 	//Assigns the shared pointer to an enemy struct and adds it to the vector
 	Enemy newEnemy(newPatron);
 	enemyVector.push_back(newEnemy);

@@ -62,21 +62,21 @@ bool Menu(Engine& sdlEngine, const float frameDelay)
 
 	//Text elements
 	//Title
-	std::shared_ptr<Text> titleText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 200);
+	std::shared_ptr<Text> titleText = std::make_shared<Text>(sdlEngine.GetRenderer(), "Data\\munro.ttf", 200);
 	titleText->ChangeColor(255, 255, 255);
 	titleText->ChangeText("TAPPER");
 	titleText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (titleText->GetRect().w / 2), 50);
 	sdlEngine.AddLayerElement(titleText, 0);
 
 	//Start button
-	std::shared_ptr<Text> startText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 100);
+	std::shared_ptr<Text> startText = std::make_shared<Text>(sdlEngine.GetRenderer(), "Data\\munro.ttf", 100);
 	startText->ChangeColor(255, 255, 255);
 	startText->ChangeText("START");
 	startText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (startText->GetRect().w / 2), sdlEngine.GetWindowHeight() / 2);
 	sdlEngine.AddLayerElement(startText, 0);
 
 	//Exit button
-	std::shared_ptr<Text> exitText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 80);
+	std::shared_ptr<Text> exitText = std::make_shared<Text>(sdlEngine.GetRenderer(), "Data\\munro.ttf", 80);
 	exitText->ChangeColor(255, 255, 255);
 	exitText->ChangeText("EXIT");
 	exitText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (exitText->GetRect().w / 2), (sdlEngine.GetWindowHeight() / 2 - exitText->GetRect().h / 2) + startText->GetRect().h + 80);
@@ -145,7 +145,7 @@ void Instructions(Engine& sdlEngine, const float frameDelay)
 {
 	//Instructions
 	std::shared_ptr<Background> instructions = std::make_shared<Background>(sdlEngine.GetRenderer());
-	instructions->LoadImage("Instructions.bmp");
+	instructions->LoadImage("Data\\Instructions.bmp");
 	sdlEngine.AddLayerElement(instructions, 0);
 
 	//Variables related to frame delay
@@ -189,24 +189,24 @@ int Game(Engine& sdlEngine, const float frameDelay)
 	//Background elements
 	//Floor
 	std::shared_ptr<Background> floor = std::make_shared<Background>(sdlEngine.GetRenderer());
-	floor->LoadImage("Floor.bmp");
+	floor->LoadImage("Data\\Floor.bmp");
 	sdlEngine.AddLayerElement(floor, 1);
 	//Backwall
 	std::shared_ptr<Background> backWall = std::make_shared<Background>(sdlEngine.GetRenderer());
-	backWall->LoadImage("Back Wall.bmp");
+	backWall->LoadImage("Data\\Back Wall.bmp");
 	sdlEngine.AddLayerElement(backWall, 2);
 	//Bar counters
 	std::shared_ptr<Background> barCounters = std::make_shared<Background>(sdlEngine.GetRenderer());
-	barCounters->LoadImage("Counters.bmp");
+	barCounters->LoadImage("Data\\Counters.bmp");
 	sdlEngine.AddLayerElement(barCounters, 4);
 	//Side walls
 	std::shared_ptr<Background> sideWall = std::make_shared<Background>(sdlEngine.GetRenderer());
-	sideWall->LoadImage("Side Wall.bmp");
+	sideWall->LoadImage("Data\\Side Wall.bmp");
 	sdlEngine.AddLayerElement(sideWall, 6);
 
 	//Player
 	std::shared_ptr<Player> player = std::make_shared<Player>(sdlEngine.GetRenderer(), sdlEngine.GetController());
-	player->LoadImage("Barman.bmp");
+	player->LoadImage("Data\\Barman.bmp");
 	sdlEngine.AddLayerElement(player, 5);
 
 	//Projecitle handler
@@ -218,17 +218,17 @@ int Game(Engine& sdlEngine, const float frameDelay)
 
 	//Text elements
 	//Lives text
-	std::shared_ptr<Text> livesText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 60);
+	std::shared_ptr<Text> livesText = std::make_shared<Text>(sdlEngine.GetRenderer(), "Data\\munro.ttf", 60);
 	livesText->ChangeText("Lives: 3");
 	livesText->SetRectPos(30, 30);
 	sdlEngine.AddLayerElement(livesText, 8);
 	//Round text
-	std::shared_ptr<Text> roundText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 80);
+	std::shared_ptr<Text> roundText = std::make_shared<Text>(sdlEngine.GetRenderer(), "Data\\munro.ttf", 80);
 	roundText->ChangeText("Round " + std::to_string(1));
 	roundText->SetRectPos(sdlEngine.GetWindowWidth() / 2 - roundText->GetRect().w / 2, sdlEngine.GetWindowHeight() / 2 - roundText->GetRect().h);
 	sdlEngine.AddLayerElement(roundText, 8);
 	//Round text 2
-	std::shared_ptr<Text> roundText_2 = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 80);
+	std::shared_ptr<Text> roundText_2 = std::make_shared<Text>(sdlEngine.GetRenderer(), "Data\\munro.ttf", 80);
 	roundText_2->ChangeText("Press any key to start");
 	roundText_2->SetRectPos(sdlEngine.GetWindowWidth() / 2 - roundText_2->GetRect().w / 2, (sdlEngine.GetWindowHeight() / 2 - roundText_2->GetRect().h) + roundText->GetRect().h);
 	sdlEngine.AddLayerElement(roundText_2, 8);
@@ -482,21 +482,21 @@ void GameOver(Engine& sdlEngine, const float frameDelay, int _round)
 
 	//Text elements
 	//Title
-	std::shared_ptr<Text> titleText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 200);
+	std::shared_ptr<Text> titleText = std::make_shared<Text>(sdlEngine.GetRenderer(), "Data\\munro.ttf", 200);
 	titleText->ChangeColor(255, 255, 255);
 	titleText->ChangeText("GAME OVER!");
 	titleText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (titleText->GetRect().w / 2), 50);
 	sdlEngine.AddLayerElement(titleText, 0);
 
 	//Round text
-	std::shared_ptr<Text> roundText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 100);
+	std::shared_ptr<Text> roundText = std::make_shared<Text>(sdlEngine.GetRenderer(), "Data\\munro.ttf", 100);
 	roundText->ChangeColor(255, 255, 255);
 	roundText->ChangeText("You got to Round " + std::to_string(_round));
 	roundText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (roundText->GetRect().w / 2), sdlEngine.GetWindowHeight() / 2 - 100);
 	sdlEngine.AddLayerElement(roundText, 0);
 
 	//Return button
-	std::shared_ptr<Text> returnText = std::make_shared<Text>(sdlEngine.GetRenderer(), "munro.ttf", 80);
+	std::shared_ptr<Text> returnText = std::make_shared<Text>(sdlEngine.GetRenderer(), "Data\\munro.ttf", 80);
 	returnText->ChangeColor(255, 255, 255);
 	returnText->ChangeText("RETURN");
 	returnText->SetRectPos((sdlEngine.GetWindowWidth() / 2) - (returnText->GetRect().w / 2), (sdlEngine.GetWindowHeight() / 2 - returnText->GetRect().h / 2) + roundText->GetRect().h + 200);

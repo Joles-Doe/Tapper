@@ -1,13 +1,3 @@
-﻿  main.cpp
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\ProjectileHandler.h(34,52): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'main.cpp')
-  
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\EnemyHandler.h(33,47): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'main.cpp')
-  
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\main.cpp(20,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\main.cpp(131,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\main.cpp(175,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\main.cpp(458,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\Tapper\main.cpp(544,25): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-  Tapper.vcxproj -> C:\Users\Scott\Documents\Documents\((Documents))\University\Object Oriented Programming\Assignment\Program\Tapper\x64\Debug\Tapper.exe
+﻿  EnemyHandler.cpp
+D:\s5623772\Tapper\Tapper\EnemyHandler.h(33): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Tapper.vcxproj -> D:\s5623772\Tapper\x64\Debug\Tapper.exe

@@ -37,9 +37,11 @@ Engine::Engine()
 	}
 	else
 	{
-		menuMusic = Mix_LoadMUS("Menu.mp3");
-		gameMusic = Mix_LoadMUS("Game.mp3");
-		gameOverMusic = Mix_LoadMUS("Game Over.mp3");
+		//Adds music and sets volume
+		menuMusic = Mix_LoadMUS("Data\\Menu.mp3");
+		gameMusic = Mix_LoadMUS("Data\\Game.mp3");
+		gameOverMusic = Mix_LoadMUS("Data\\Game Over.mp3");
+		Mix_MasterVolume(60);
 	}
 	
 	//Creates an instance of the controller
